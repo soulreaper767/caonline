@@ -15,9 +15,14 @@ app_include_js = "caonline.bundle.js"
 app_include_css = "caonline.bundle.css"
 
 # ---------------------------------------------------------------------------
-# Fixtures — everything shipped as version-controlled config, not clicked
-# together in the UI. Export with:
+# Fixtures — plain data records shipped as version-controlled config, not
+# clicked together in the UI. Export with:
 #   bench --site [site] export-fixtures --app caonline
+#
+# Workspace / Number Card / Dashboard Chart / Report are deliberately NOT
+# fixtures — see install.py's module docstring for why (Workspace sidebar
+# caching needs an explicit frappe.clear_cache() that generic fixture sync
+# doesn't do). Their JSON lives under setup_data/, synced by after_migrate.
 # ---------------------------------------------------------------------------
 fixtures = [
 	# Role + Role Profile fixture data itself lives in
@@ -26,11 +31,7 @@ fixtures = [
 	# below — this list controls `bench export-fixtures` re-export scope).
 	{"dt": "Role", "filters": [["role_name", "like", "CA %"]]},
 	{"dt": "Role Profile", "filters": [["role_profile", "like", "CA %"]]},
-	{"dt": "Workspace", "filters": [["module", "=", "CA Core"]]},
 	{"dt": "Print Format", "filters": [["module", "in", ["CA Core", "CA Audit", "CA Billing"]]]},
-	{"dt": "Number Card", "filters": [["module", "=", "CA Core"]]},
-	{"dt": "Dashboard Chart", "filters": [["module", "=", "CA Core"]]},
-	{"dt": "Report", "filters": [["module", "like", "CA %"]]},
 	{
 		"dt": "Custom Field",
 		"filters": [["dt", "in", ["Timesheet", "Timesheet Detail", "Company", "Sales Invoice", "Employee"]]],
@@ -44,6 +45,12 @@ fixtures = [
 	{"dt": "CA Audit Head"},
 	{"dt": "Workflow", "filters": [["document_type", "=", "CA Engagement"]]},
 ]
+
+# ---------------------------------------------------------------------------
+# Install/migrate hooks — see install.py for what these actually do and why
+# they're not just more fixtures.
+# ---------------------------------------------------------------------------
+after_migrate = "caonline.caonline.install.after_migrate"
 
 # ---------------------------------------------------------------------------
 # Doc events — server-side only. Rule-break detection, company provisioning,

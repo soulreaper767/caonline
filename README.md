@@ -50,8 +50,21 @@ nine phases:
   more Kanban boards (Query Point review queue, Rule Flag triage), plus
   `Company.ca_client`, `Sales Invoice.ca_engagement`, and `Employee.ca_grade`
   custom fields (the last one auto-feeding `Timesheet.ca_grade_at_entry` via
-  `fetch_from`) — all fixture-shipped, installed automatically on
-  `bench migrate`, nothing to click together by hand.
+  `fetch_from`). Roles, Custom Fields, Kanban Boards, Print Formats, and the
+  Workflow ship as standard `hooks.fixtures` (`caonline/fixtures/*.json`).
+  Workspace, Number Cards, Dashboard Charts, and Reports ship differently —
+  via `caonline/setup_data/*.json` synced by an explicit `after_migrate`
+  hook (`install.py`) that also clears the server cache — see that file's
+  docstring for why generic fixture sync isn't reliable enough for the
+  Workspace sidebar specifically. `after_migrate` also grants the
+  `Administrator` account the `CA Partner` role so there's at least one
+  fully-set-up login immediately after install, with no manual role
+  assignment step required first.
+
+  This repo does **not** create real `User` accounts on install (that would
+  mean fabricating email addresses/passwords for people who don't exist) —
+  "users" here means the role hierarchy is fully installed and ready to
+  assign to whichever real accounts the firm creates.
 
 ## What's included
 
