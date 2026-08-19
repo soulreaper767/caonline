@@ -66,6 +66,29 @@ nine phases:
   "users" here means the role hierarchy is fully installed and ready to
   assign to whichever real accounts the firm creates.
 
+## Module structure (important — this bit the first install attempts)
+
+Frappe's doctype sync (`frappe.model.sync.sync_for`, run by both
+`bench migrate` and `bench install-app`) requires every module listed in
+`modules.txt` to be an actual Python package folder under `caonline/caonline/`
+— it literally does `import caonline.<scrubbed_module_name>`. Doctypes are
+NOT found by a flat recursive scan; they must live under
+`caonline/caonline/<scrubbed_module>/doctype/<name>/`. All 7 modules
+(`CA Core`→`ca_core`, `CA Compliance`→`ca_compliance`, `CA Audit`→`ca_audit`,
+`CA Tax`→`ca_tax`, `CA Billing`→`ca_billing`, `CA Portal`→`ca_portal`,
+`CA Reports`→`ca_reports`) have a package folder with `__init__.py`, even
+`ca_portal` which currently has no doctypes yet (still required, or
+`sync_for` throws `ModuleNotFoundError` and both `install-app` and `migrate`
+fail outright for this app — this happened in practice before the fix).
+`api/`, `install.py`, `fixtures/`, and `setup_data/` are plain Python/data,
+not doctype-sync targets, so they stay at `caonline/caonline/` directly —
+only `doctype/` folders needed to move under their module.
+
+Below, doctype paths are shown relative to their module folder for brevity
+(e.g. `doctype/ca_client/` means `caonline/caonline/ca_core/doctype/ca_client/`
+— check the module noted against each entry, or the doctype's own JSON
+`module` field, for which package it actually lives under).
+
 ## What's included
 
 ```

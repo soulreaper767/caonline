@@ -59,7 +59,7 @@ after_migrate = "caonline.caonline.install.after_migrate"
 # ---------------------------------------------------------------------------
 doc_events = {
 	"CA Engagement": {
-		"validate": "caonline.caonline.doctype.ca_engagement.ca_engagement.validate_team_independence",
+		"validate": "caonline.caonline.ca_core.doctype.ca_engagement.ca_engagement.validate_team_independence",
 		"on_submit": [
 			"caonline.caonline.api.company_provisioning.provision_on_engagement_submit",
 			"caonline.caonline.api.compliance_engine.on_engagement_submit",
@@ -67,19 +67,19 @@ doc_events = {
 		],
 	},
 	"CA Query Point": {
-		"validate": "caonline.caonline.doctype.ca_query_point.ca_query_point.block_self_approval",
+		"validate": "caonline.caonline.ca_core.doctype.ca_query_point.ca_query_point.block_self_approval",
 	},
 	"Timesheet": {
 		"on_submit": [
-			"caonline.caonline.doctype.ca_engagement_task.ca_engagement_task.on_timesheet_change",
+			"caonline.caonline.ca_audit.doctype.ca_engagement_task.ca_engagement_task.on_timesheet_change",
 			"caonline.caonline.api.wip_manager.sync_wip_from_timesheet",
 		],
 		"on_update_after_submit": [
-			"caonline.caonline.doctype.ca_engagement_task.ca_engagement_task.on_timesheet_change",
+			"caonline.caonline.ca_audit.doctype.ca_engagement_task.ca_engagement_task.on_timesheet_change",
 			"caonline.caonline.api.wip_manager.sync_wip_from_timesheet",
 		],
 		"on_cancel": [
-			"caonline.caonline.doctype.ca_engagement_task.ca_engagement_task.on_timesheet_change",
+			"caonline.caonline.ca_audit.doctype.ca_engagement_task.ca_engagement_task.on_timesheet_change",
 			"caonline.caonline.api.wip_manager.sync_wip_from_timesheet",
 		],
 	},
@@ -88,9 +88,9 @@ doc_events = {
 # Row-level list/report filtering — see get_permission_query_conditions() in
 # each controller for the actual logic and the reasoning behind it.
 permission_query_conditions = {
-	"CA Engagement": "caonline.caonline.doctype.ca_engagement.ca_engagement.get_permission_query_conditions",
-	"CA Uploaded Trial Balance": "caonline.caonline.doctype.ca_uploaded_trial_balance.ca_uploaded_trial_balance.get_permission_query_conditions",
-	"CA Engagement Task": "caonline.caonline.doctype.ca_engagement_task.ca_engagement_task.get_permission_query_conditions",
+	"CA Engagement": "caonline.caonline.ca_core.doctype.ca_engagement.ca_engagement.get_permission_query_conditions",
+	"CA Uploaded Trial Balance": "caonline.caonline.ca_core.doctype.ca_uploaded_trial_balance.ca_uploaded_trial_balance.get_permission_query_conditions",
+	"CA Engagement Task": "caonline.caonline.ca_audit.doctype.ca_engagement_task.ca_engagement_task.get_permission_query_conditions",
 }
 
 # ---------------------------------------------------------------------------
