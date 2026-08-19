@@ -1,0 +1,48 @@
+[
+ {
+  "doctype": "Dashboard Chart",
+  "name": "Engagements by Status",
+  "chart_name": "Engagements by Status",
+  "chart_type": "Group By",
+  "document_type": "CA Engagement",
+  "group_by_type": "Count",
+  "group_by_based_on": "status",
+  "number_of_groups": 0,
+  "type": "Bar",
+  "timeseries": 0,
+  "is_public": 1,
+  "module": "CA Core",
+  "filters_json": "[]"
+ },
+ {
+  "doctype": "Dashboard Chart",
+  "name": "Open Rule Flags by Severity",
+  "chart_name": "Open Rule Flags by Severity",
+  "chart_type": "Group By",
+  "document_type": "CA Rule Flag",
+  "group_by_type": "Count",
+  "group_by_based_on": "severity",
+  "number_of_groups": 0,
+  "type": "Donut",
+  "timeseries": 0,
+  "is_public": 1,
+  "module": "CA Core",
+  "filters_json": "[[\"CA Rule Flag\",\"status\",\"=\",\"Open\"]]"
+ },
+ {
+  "doctype": "Dashboard Chart",
+  "name": "WIP Value Trend",
+  "chart_name": "WIP Value Trend",
+  "chart_type": "Sum",
+  "document_type": "CA WIP Entry",
+  "based_on": "creation",
+  "value_based_on": "billable_value",
+  "type": "Line",
+  "timeseries": 1,
+  "timespan": "Last Year",
+  "time_interval": "Monthly",
+  "is_public": 1,
+  "module": "CA Core",
+  "filters_json": "[]"
+ }
+]

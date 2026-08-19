@@ -14,5 +14,32 @@
   ],
   "show_labels": 1,
   "description": "Primary Assignment Manager view — every audit-head/general task across the firm's active engagements, grouped by status. Filter to a single Engagement to plan one job's fieldwork; filter by Assigned To to see one person's queue. Cards show task_title, audit_head, assigned_to, due_date, and the over_budget flag."
+ },
+ {
+  "doctype": "Kanban Board",
+  "kanban_board_name": "CA Query Point - Review Queue",
+  "reference_doctype": "CA Query Point",
+  "field_name": "status",
+  "columns": [
+   {"column_name": "Open", "indicator": "red"},
+   {"column_name": "Cleared", "indicator": "orange"},
+   {"column_name": "Closed", "indicator": "green"}
+  ],
+  "show_labels": 1,
+  "description": "Every open review point across engagements — filter to one engagement during fieldwork/review, or to one assignee to see a preparer's outstanding queries."
+ },
+ {
+  "doctype": "Kanban Board",
+  "kanban_board_name": "CA Rule Flag - Triage Board",
+  "reference_doctype": "CA Rule Flag",
+  "field_name": "status",
+  "columns": [
+   {"column_name": "Open", "indicator": "red"},
+   {"column_name": "Under Review", "indicator": "orange"},
+   {"column_name": "Resolved", "indicator": "green"},
+   {"column_name": "Accepted Risk", "indicator": "blue"}
+  ],
+  "show_labels": 1,
+  "description": "Firm-wide compliance triage view — mechanical/standard/independence flags across every engagement, grouped by resolution status. Breach-severity Open flags here are exactly what blocks an engagement's Partner Sign-off transition."
  }
 ]

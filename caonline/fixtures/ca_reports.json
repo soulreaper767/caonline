@@ -1,0 +1,99 @@
+[
+ {
+  "doctype": "Report",
+  "name": "CA Engagement Status Summary",
+  "report_name": "CA Engagement Status Summary",
+  "ref_doctype": "CA Engagement",
+  "report_type": "Query Report",
+  "is_standard": "No",
+  "module": "CA Core",
+  "disabled": 0,
+  "query": "select\n  e.status as \"Status:Data:150\",\n  t.service_line as \"Service Line:Data:200\",\n  count(*) as \"Engagements:Int:120\",\n  sum(e.budgeted_hours_total) as \"Budgeted Hours:Float:150\",\n  sum(e.actual_hours_total) as \"Actual Hours:Float:150\"\nfrom `tabCA Engagement` e\nleft join `tabCA Engagement Type Template` t on t.name = e.engagement_type_template\nwhere e.docstatus < 2\ngroup by e.status, t.service_line\norder by e.status",
+  "roles": [
+   {"role": "CA Partner"},
+   {"role": "CA Manager"},
+   {"role": "CA Department Supervisor"}
+  ]
+ },
+ {
+  "doctype": "Report",
+  "name": "CA Open Rule Flags",
+  "report_name": "CA Open Rule Flags",
+  "ref_doctype": "CA Rule Flag",
+  "report_type": "Query Report",
+  "is_standard": "No",
+  "module": "CA Compliance",
+  "disabled": 0,
+  "query": "select\n  name as \"Rule Flag:Link/CA Rule Flag:150\",\n  engagement as \"Engagement:Link/CA Engagement:150\",\n  financial_statement as \"Financial Statement:Link/CA Financial Statement:180\",\n  severity as \"Severity:Data:120\",\n  rule_source as \"Source:Data:220\",\n  description as \"Description:Data:320\",\n  raised_by as \"Raised By:Link/User:150\",\n  raised_on as \"Raised On:Date:100\"\nfrom `tabCA Rule Flag`\nwhere status = 'Open'\norder by field(severity, 'Breach', 'Judgment Required', 'Disclosure Gap', 'Observation'), raised_on",
+  "roles": [
+   {"role": "CA Partner"},
+   {"role": "CA Manager"},
+   {"role": "CA Department Supervisor"},
+   {"role": "CA QCR Reviewer"}
+  ]
+ },
+ {
+  "doctype": "Report",
+  "name": "CA Staff Workload",
+  "report_name": "CA Staff Workload",
+  "ref_doctype": "CA Engagement Task",
+  "report_type": "Query Report",
+  "is_standard": "No",
+  "module": "CA Audit",
+  "disabled": 0,
+  "query": "select\n  t.assigned_to as \"Staff:Link/User:180\",\n  t.engagement as \"Engagement:Link/CA Engagement:150\",\n  count(*) as \"Open Tasks:Int:110\",\n  sum(t.budgeted_hours) as \"Budgeted Hours:Float:140\",\n  sum(t.actual_hours) as \"Actual Hours:Float:140\",\n  sum(case when t.over_budget = 1 then 1 else 0 end) as \"Over Budget Tasks:Int:150\"\nfrom `tabCA Engagement Task` t\nwhere t.status != 'Cleared' and t.assigned_to is not null\ngroup by t.assigned_to, t.engagement\norder by t.assigned_to",
+  "roles": [
+   {"role": "CA Partner"},
+   {"role": "CA Manager"},
+   {"role": "CA Department Supervisor"},
+   {"role": "CA Job Incharge"}
+  ]
+ },
+ {
+  "doctype": "Report",
+  "name": "CA WIP Summary by Engagement",
+  "report_name": "CA WIP Summary by Engagement",
+  "ref_doctype": "CA WIP Entry",
+  "report_type": "Query Report",
+  "is_standard": "No",
+  "module": "CA Billing",
+  "disabled": 0,
+  "query": "select\n  engagement as \"Engagement:Link/CA Engagement:150\",\n  sum(hours) as \"Total Hours:Float:120\",\n  sum(billable_value) as \"Billable Value:Currency:150\",\n  sum(case when billed = 0 then billable_value else 0 end) as \"Unbilled Value:Currency:150\",\n  sum(case when billed = 1 then billable_value else 0 end) as \"Billed Value:Currency:150\"\nfrom `tabCA WIP Entry`\ngroup by engagement\norder by engagement",
+  "roles": [
+   {"role": "CA Partner"},
+   {"role": "CA Manager"}
+  ]
+ },
+ {
+  "doctype": "Report",
+  "name": "CA QCR Findings Register",
+  "report_name": "CA QCR Findings Register",
+  "ref_doctype": "CA QCR Review",
+  "report_type": "Query Report",
+  "is_standard": "No",
+  "module": "CA Compliance",
+  "disabled": 0,
+  "query": "select\n  r.name as \"QCR Review:Link/CA QCR Review:150\",\n  r.engagement as \"Engagement:Link/CA Engagement:150\",\n  r.qcr_reviewer as \"Reviewer:Link/User:150\",\n  r.overall_rating as \"Overall Rating:Data:220\",\n  f.finding_area as \"Area:Data:180\",\n  f.finding as \"Finding:Data:320\",\n  f.severity as \"Severity:Data:100\"\nfrom `tabCA QCR Review` r\ninner join `tabCA QCR Finding` f on f.parent = r.name\norder by r.review_date desc",
+  "roles": [
+   {"role": "CA Partner"},
+   {"role": "CA QCR Reviewer"}
+  ]
+ },
+ {
+  "doctype": "Report",
+  "name": "CA Checklist Completion",
+  "report_name": "CA Checklist Completion",
+  "ref_doctype": "CA Engagement Checklist",
+  "report_type": "Query Report",
+  "is_standard": "No",
+  "module": "CA Compliance",
+  "disabled": 0,
+  "query": "select\n  name as \"Checklist:Link/CA Engagement Checklist:150\",\n  engagement as \"Engagement:Link/CA Engagement:150\",\n  total_items as \"Total Items:Int:100\",\n  completed_items as \"Completed:Int:100\",\n  percent_complete as \"% Complete:Percent:120\"\nfrom `tabCA Engagement Checklist`\norder by percent_complete asc",
+  "roles": [
+   {"role": "CA Partner"},
+   {"role": "CA Manager"},
+   {"role": "CA Department Supervisor"},
+   {"role": "CA Job Incharge"}
+  ]
+ }
+]

@@ -1,0 +1,37 @@
+[
+ {
+  "doctype": "Custom Field",
+  "dt": "Company",
+  "fieldname": "ca_client",
+  "label": "CA Client",
+  "fieldtype": "Link",
+  "options": "CA Client",
+  "insert_after": "company_name",
+  "read_only": 1,
+  "description": "Set automatically when this Company is auto-provisioned as a bookkeeping client's isolated books — see api/company_provisioning.py."
+ },
+ {
+  "doctype": "Custom Field",
+  "dt": "Sales Invoice",
+  "fieldname": "ca_engagement",
+  "label": "CA Engagement",
+  "fieldtype": "Link",
+  "options": "CA Engagement",
+  "insert_after": "customer",
+  "in_list_view": 1,
+  "in_standard_filter": 1,
+  "description": "Which engagement this invoice bills — set when billing WIP (see CA WIP Entry.sales_invoice for the reverse link)."
+ },
+ {
+  "doctype": "Custom Field",
+  "dt": "Employee",
+  "fieldname": "ca_grade",
+  "label": "CA Grade",
+  "fieldtype": "Select",
+  "options": "\nJunior Trainee\nSenior Trainee\nJob Incharge\nDepartment Supervisor\nSuper Supervisor\nManager\nPartner",
+  "insert_after": "designation",
+  "in_list_view": 1,
+  "in_standard_filter": 1,
+  "description": "This staff member's current CA grade — feeds Timesheet.ca_grade_at_entry (a snapshot taken when the timesheet is created, so a later promotion here never retroactively changes historical WIP valuation) and is the default grade suggested when staffing them onto a CA Engagement Team."
+ }
+]

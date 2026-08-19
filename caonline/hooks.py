@@ -29,8 +29,16 @@ fixtures = [
 	{"dt": "Workspace", "filters": [["module", "=", "CA Core"]]},
 	{"dt": "Print Format", "filters": [["module", "in", ["CA Core", "CA Audit", "CA Billing"]]]},
 	{"dt": "Number Card", "filters": [["module", "=", "CA Core"]]},
-	{"dt": "Custom Field", "filters": [["dt", "in", ["Timesheet", "Timesheet Detail"]]]},
-	{"dt": "Kanban Board", "filters": [["reference_doctype", "in", ["CA Engagement Task", "CA Query Point"]]]},
+	{"dt": "Dashboard Chart", "filters": [["module", "=", "CA Core"]]},
+	{"dt": "Report", "filters": [["module", "like", "CA %"]]},
+	{
+		"dt": "Custom Field",
+		"filters": [["dt", "in", ["Timesheet", "Timesheet Detail", "Company", "Sales Invoice", "Employee"]]],
+	},
+	{
+		"dt": "Kanban Board",
+		"filters": [["reference_doctype", "in", ["CA Engagement Task", "CA Query Point", "CA Rule Flag"]]],
+	},
 	{"dt": "CA Applicable Standard"},
 	{"dt": "CA Report Wording Library"},
 	{"dt": "CA Audit Head"},

@@ -1,0 +1,68 @@
+[
+ {
+  "doctype": "Number Card",
+  "name": "Active Engagements",
+  "label": "Active Engagements",
+  "document_type": "CA Engagement",
+  "type": "Document Type",
+  "function": "Count",
+  "is_public": 1,
+  "show_percentage_stats": 0,
+  "module": "CA Core",
+  "color": "#2490EF",
+  "filters_json": "[[\"CA Engagement\",\"status\",\"not in\",[\"Closed\",\"Archived\"]]]"
+ },
+ {
+  "doctype": "Number Card",
+  "name": "Open Query Points",
+  "label": "Open Query Points",
+  "document_type": "CA Query Point",
+  "type": "Document Type",
+  "function": "Count",
+  "is_public": 1,
+  "show_percentage_stats": 0,
+  "module": "CA Core",
+  "color": "#F58231",
+  "filters_json": "[[\"CA Query Point\",\"status\",\"=\",\"Open\"]]"
+ },
+ {
+  "doctype": "Number Card",
+  "name": "Open Breach Flags",
+  "label": "Open Breach Flags",
+  "document_type": "CA Rule Flag",
+  "type": "Document Type",
+  "function": "Count",
+  "is_public": 1,
+  "show_percentage_stats": 0,
+  "module": "CA Core",
+  "color": "#E24C4C",
+  "filters_json": "[[\"CA Rule Flag\",\"severity\",\"=\",\"Breach\"],[\"CA Rule Flag\",\"status\",\"=\",\"Open\"]]"
+ },
+ {
+  "doctype": "Number Card",
+  "name": "Pending QCR Reviews",
+  "label": "Pending QCR Reviews",
+  "document_type": "CA QCR Review",
+  "type": "Document Type",
+  "function": "Count",
+  "is_public": 1,
+  "show_percentage_stats": 0,
+  "module": "CA Core",
+  "color": "#7C54A5",
+  "filters_json": "[[\"CA QCR Review\",\"status\",\"=\",\"In Progress\"]]"
+ },
+ {
+  "doctype": "Number Card",
+  "name": "Unbilled WIP Value",
+  "label": "Unbilled WIP Value",
+  "document_type": "CA WIP Entry",
+  "type": "Document Type",
+  "function": "Sum",
+  "aggregate_function_based_on": "billable_value",
+  "is_public": 1,
+  "show_percentage_stats": 0,
+  "module": "CA Core",
+  "color": "#29A745",
+  "filters_json": "[[\"CA WIP Entry\",\"billed\",\"=\",0]]"
+ }
+]

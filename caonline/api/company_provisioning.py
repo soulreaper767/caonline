@@ -62,6 +62,7 @@ def create_company_for_client(client):
 			"country": "Pakistan",
 			"chart_of_accounts": coa_template,
 			"create_chart_of_accounts_based_on": "Standard Template",
+			"ca_client": client.name,
 		}
 	).insert(ignore_permissions=True)
 

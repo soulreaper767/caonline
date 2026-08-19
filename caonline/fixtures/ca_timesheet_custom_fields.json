@@ -30,6 +30,8 @@
   "options": "Junior Trainee\nSenior Trainee\nJob Incharge\nDepartment Supervisor\nSuper Supervisor\nManager\nPartner",
   "insert_after": "employee",
   "read_only": 1,
-  "description": "Snapshot of the staff member's grade at the time the timesheet was created, so a later promotion doesn't retroactively change historical WIP rate calculations (build prompt Section 10 / CA Billing Rate Card)."
+  "fetch_from": "employee.ca_grade",
+  "fetch_if_empty": 0,
+  "description": "Snapshot of the staff member's grade at the time the timesheet was created (auto-fetched from Employee.ca_grade when the Employee is selected), so a later promotion doesn't retroactively change historical WIP rate calculations — see CA Billing Rate Card / api/wip_manager.py."
  }
 ]

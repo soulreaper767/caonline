@@ -44,6 +44,14 @@ nine phases:
 - **Phase 9** — Portal API hardening: verified none of the above leak to
   `CA Client Portal` by omission. Actual `www/` portal pages are still not
   built — this remains backend/API surface only (see Known gaps).
+- **Desk UI layer** — a single "CA Online" Workspace (sidebar entry,
+  shortcuts, Kanban boards, cards grouping every doctype by area, charts and
+  number cards), 5 Number Cards, 3 Dashboard Charts, 6 Query Reports, and 2
+  more Kanban boards (Query Point review queue, Rule Flag triage), plus
+  `Company.ca_client`, `Sales Invoice.ca_engagement`, and `Employee.ca_grade`
+  custom fields (the last one auto-feeding `Timesheet.ca_grade_at_entry` via
+  `fetch_from`) — all fixture-shipped, installed automatically on
+  `bench migrate`, nothing to click together by hand.
 
 ## What's included
 
@@ -271,8 +279,9 @@ for the firm's actual service-line list (Section 3 of the build prompt).
 - No desk Page/UI wraps `assignment_manager.py`'s functions, or the new
   `compliance_engine.py` / `working_paper_manager.py` / `wip_manager.py`
   functions, into a single screen — everything is callable (e.g. from a
-  custom Page or a Vite/React panel) but no such UI is built.
-- No Workspace or Number Card fixtures yet.
+  custom Page or a Vite/React panel) but no such UI is built. The Workspace
+  gives shortcuts/Kanban/reports access to the underlying doctypes, not a
+  purpose-built Assignment Manager screen.
 - No `www/` client portal pages exist behind the `/ca-portal` route stub —
   deliberately out of scope for this pass (backend/API surface only); a
   real frontend still needs to be built to consume it.
