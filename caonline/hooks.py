@@ -7,6 +7,14 @@ app_license = "Proprietary"
 required_apps = ["frappe/erpnext"]
 
 # ---------------------------------------------------------------------------
+# Desk assets — both bundles are currently placeholders (no custom desk JS/
+# CSS yet); they exist so `bench build` has a defined entry point for this
+# app instead of tripping over a missing public/ scaffold.
+# ---------------------------------------------------------------------------
+app_include_js = "caonline.bundle.js"
+app_include_css = "caonline.bundle.css"
+
+# ---------------------------------------------------------------------------
 # Fixtures — everything shipped as version-controlled config, not clicked
 # together in the UI. Export with:
 #   bench --site [site] export-fixtures --app caonline
