@@ -1,0 +1,13 @@
+[
+ {"doctype": "Workflow Action Master", "workflow_action_name": "Sign Engagement Letter"},
+ {"doctype": "Workflow Action Master", "workflow_action_name": "Begin Planning"},
+ {"doctype": "Workflow Action Master", "workflow_action_name": "Start Fieldwork"},
+ {"doctype": "Workflow Action Master", "workflow_action_name": "Send for Review"},
+ {"doctype": "Workflow Action Master", "workflow_action_name": "Escalate to Partner"},
+ {"doctype": "Workflow Action Master", "workflow_action_name": "Return to Fieldwork"},
+ {"doctype": "Workflow Action Master", "workflow_action_name": "Issue Report"},
+ {"doctype": "Workflow Action Master", "workflow_action_name": "Return for Rework"},
+ {"doctype": "Workflow Action Master", "workflow_action_name": "Move to Billing"},
+ {"doctype": "Workflow Action Master", "workflow_action_name": "Close Engagement"},
+ {"doctype": "Workflow Action Master", "workflow_action_name": "Archive"}
+]

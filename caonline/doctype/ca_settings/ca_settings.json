@@ -1,0 +1,79 @@
+{
+ "doctype": "DocType",
+ "name": "CA Settings",
+ "module": "CA Core",
+ "issingle": 1,
+ "engine": "InnoDB",
+ "fields": [
+  {
+   "fieldname": "bookkeeping_section",
+   "fieldtype": "Section Break",
+   "label": "Bookkeeping Defaults"
+  },
+  {
+   "fieldname": "default_bookkeeping_chart_of_accounts_template",
+   "fieldtype": "Data",
+   "label": "Default Chart of Accounts Template",
+   "default": "Standard",
+   "description": "Passed straight into Company.chart_of_accounts when auto-provisioning a bookkeeping client's isolated Company — see api/company_provisioning.py. Must be a valid ERPNext CoA template name (Data, not Link — ERPNext's own chart_of_accounts field is a dynamically populated Select, not backed by a doctype)."
+  },
+  {
+   "fieldname": "column_break_1",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "default_currency",
+   "fieldtype": "Data",
+   "label": "Default Currency",
+   "default": "PKR"
+  },
+  {
+   "fieldname": "default_country",
+   "fieldtype": "Data",
+   "label": "Default Country",
+   "default": "Pakistan"
+  },
+  {
+   "fieldname": "fiscal_year_section",
+   "fieldtype": "Section Break",
+   "label": "Fiscal Year Policy"
+  },
+  {
+   "fieldname": "firm_default_fiscal_year_end",
+   "fieldtype": "Select",
+   "label": "Firm Default Fiscal Year End",
+   "options": "30 June\n31 December\nOther",
+   "default": "30 June",
+   "description": "Read by _ensure_client_fiscal_year() once its per-firm policy is implemented (see api/company_provisioning.py)."
+  },
+  {
+   "fieldname": "identity_section",
+   "fieldtype": "Section Break",
+   "label": "Firm Identity (Report Headers)"
+  },
+  {
+   "fieldname": "firm_display_name",
+   "fieldtype": "Data",
+   "label": "Firm Display Name"
+  },
+  {
+   "fieldname": "firm_logo",
+   "fieldtype": "Attach Image",
+   "label": "Firm Logo"
+  },
+  {
+   "fieldname": "column_break_2",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "default_report_footer_note",
+   "fieldtype": "Small Text",
+   "label": "Default Report Footer Note"
+  }
+ ],
+ "permissions": [
+  {"role": "CA Partner", "read": 1, "write": 1},
+  {"role": "CA System Admin", "read": 1, "write": 1, "create": 1},
+  {"role": "CA Manager", "read": 1}
+ ]
+}

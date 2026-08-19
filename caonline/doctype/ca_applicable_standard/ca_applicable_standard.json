@@ -1,0 +1,127 @@
+{
+ "doctype": "DocType",
+ "name": "CA Applicable Standard",
+ "module": "CA Compliance",
+ "engine": "InnoDB",
+ "autoname": "hash",
+ "title_field": "standard_name",
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "track_changes": 1,
+ "fields": [
+  {
+   "fieldname": "core_section",
+   "fieldtype": "Section Break",
+   "label": "Standard / Law / Regulation"
+  },
+  {
+   "fieldname": "standard_name",
+   "fieldtype": "Data",
+   "label": "Standard Name",
+   "reqd": 1,
+   "in_list_view": 1,
+   "description": "e.g. 'Related Party Disclosures', 'Income Tax Ordinance - Section 21'. Ships with no pre-loaded content — the firm's technical team defines the real catalogue."
+  },
+  {
+   "fieldname": "short_reference",
+   "fieldtype": "Data",
+   "label": "Short Reference",
+   "in_list_view": 1,
+   "description": "e.g. 'IAS 24', 'ITO 2001 s.21'"
+  },
+  {
+   "fieldname": "column_break_1",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "category",
+   "fieldtype": "Select",
+   "label": "Category",
+   "options": "IFRS\nIAS\nGAAP\nTax Law\nCompanies Act / SECP Regulation\nAuditing Standard (ISA)\nOther",
+   "reqd": 1,
+   "in_list_view": 1,
+   "in_standard_filter": 1
+  },
+  {
+   "fieldname": "is_active",
+   "fieldtype": "Check",
+   "label": "Active",
+   "default": "1",
+   "in_list_view": 1
+  },
+  {
+   "fieldname": "period_section",
+   "fieldtype": "Section Break",
+   "label": "Applicable Period"
+  },
+  {
+   "fieldname": "effective_from",
+   "fieldtype": "Date",
+   "label": "Effective From",
+   "reqd": 1,
+   "in_list_view": 1
+  },
+  {
+   "fieldname": "column_break_2",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "effective_to",
+   "fieldtype": "Date",
+   "label": "Effective To",
+   "description": "Leave blank if still in force."
+  },
+  {
+   "fieldname": "applicability_section",
+   "fieldtype": "Section Break",
+   "label": "Applicability"
+  },
+  {
+   "fieldname": "applicable_entity_type",
+   "fieldtype": "Select",
+   "label": "Applicable Entity Type",
+   "options": "All Entity Types\nCompany - Public Listed\nCompany - Public Unlisted\nCompany - Private\nAOP / Partnership\nSole Proprietor\nIndividual\nTrust / NPO\nBranch of Foreign Company",
+   "default": "All Entity Types",
+   "in_list_view": 1,
+   "description": "Mirrors CA Client.entity_type. A standard applicable to multiple entity types is expressed as multiple rows sharing the same Standard Name."
+  },
+  {
+   "fieldname": "applicable_sector",
+   "fieldtype": "Link",
+   "options": "CA Client Sector",
+   "label": "Applicable Sector",
+   "description": "Leave blank if applicable to all sectors."
+  },
+  {
+   "fieldname": "column_break_3",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "applicable_secp_size_category",
+   "fieldtype": "Select",
+   "label": "Applicable SECP Size Category",
+   "options": "All Size Categories\nListed\nLarge\nMedium\nSmall",
+   "default": "All Size Categories",
+   "description": "Mirrors CA Client.secp_size_category."
+  },
+  {
+   "fieldname": "requirement_section",
+   "fieldtype": "Section Break",
+   "label": "Requirement Detail"
+  },
+  {
+   "fieldname": "requirement_detail",
+   "fieldtype": "Text Editor",
+   "label": "What This Standard Requires",
+   "description": "Left blank by design — populate per real standard as the firm builds out its technical library."
+  }
+ ],
+ "permissions": [
+  {"role": "CA Partner", "read": 1, "write": 1, "create": 1, "delete": 1, "export": 1},
+  {"role": "CA Manager", "read": 1, "write": 1, "create": 1, "export": 1},
+  {"role": "CA Department Supervisor", "read": 1},
+  {"role": "CA Job Incharge", "read": 1},
+  {"role": "CA Senior Trainee", "read": 1},
+  {"role": "CA Junior Trainee", "read": 1}
+ ]
+}

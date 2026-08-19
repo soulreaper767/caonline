@@ -1,0 +1,88 @@
+{
+ "doctype": "DocType",
+ "name": "CA QCR Review",
+ "module": "CA Compliance",
+ "engine": "InnoDB",
+ "autoname": "hash",
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "track_changes": 1,
+ "fields": [
+  {
+   "fieldname": "core_section",
+   "fieldtype": "Section Break",
+   "label": "QCR Review"
+  },
+  {
+   "fieldname": "engagement",
+   "fieldtype": "Link",
+   "options": "CA Engagement",
+   "label": "Engagement",
+   "reqd": 1,
+   "in_list_view": 1,
+   "in_standard_filter": 1
+  },
+  {
+   "fieldname": "qcr_reviewer",
+   "fieldtype": "Link",
+   "options": "User",
+   "label": "QCR Reviewer",
+   "reqd": 1,
+   "in_list_view": 1,
+   "description": "Must hold the CA QCR Reviewer role and must NOT have been a member of the original engagement team — enforced in controller, mirroring the independence principle behind CA QCR Reviewer's deliberately non-stacked Role Profile."
+  },
+  {
+   "fieldname": "column_break_1",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "review_date",
+   "fieldtype": "Date",
+   "label": "Review Date",
+   "default": "Today",
+   "in_list_view": 1
+  },
+  {
+   "fieldname": "status",
+   "fieldtype": "Select",
+   "label": "Status",
+   "options": "In Progress\nCompleted",
+   "default": "In Progress",
+   "in_list_view": 1,
+   "in_standard_filter": 1
+  },
+  {
+   "fieldname": "rating_section",
+   "fieldtype": "Section Break",
+   "label": "Overall Assessment"
+  },
+  {
+   "fieldname": "overall_rating",
+   "fieldtype": "Select",
+   "label": "Overall Rating",
+   "options": "Satisfactory\nSatisfactory with Improvement Points\nUnsatisfactory",
+   "in_list_view": 1
+  },
+  {
+   "fieldname": "summary",
+   "fieldtype": "Text",
+   "label": "Summary"
+  },
+  {
+   "fieldname": "findings_section",
+   "fieldtype": "Section Break",
+   "label": "Findings"
+  },
+  {
+   "fieldname": "findings",
+   "fieldtype": "Table",
+   "options": "CA QCR Finding",
+   "label": "Findings"
+  }
+ ],
+ "permissions": [
+  {"role": "CA Partner", "read": 1, "write": 1, "create": 1, "delete": 1, "report": 1},
+  {"role": "CA QCR Reviewer", "read": 1, "write": 1, "create": 1},
+  {"role": "CA Manager", "read": 1}
+ ]
+}

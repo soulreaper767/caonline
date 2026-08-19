@@ -1,0 +1,100 @@
+{
+ "doctype": "DocType",
+ "name": "CA Engagement Type Template",
+ "module": "CA Core",
+ "engine": "InnoDB",
+ "autoname": "field:template_name",
+ "title_field": "template_name",
+ "fields": [
+  {
+   "fieldname": "template_name",
+   "fieldtype": "Data",
+   "label": "Template Name",
+   "reqd": 1,
+   "unique": 1,
+   "in_list_view": 1,
+   "description": "e.g. 'Statutory Audit - Recurring', 'Statutory Audit - First Year', 'Bookkeeping - Monthly Retainer'"
+  },
+  {
+   "fieldname": "service_line",
+   "fieldtype": "Select",
+   "label": "Service Line",
+   "reqd": 1,
+   "in_list_view": 1,
+   "in_standard_filter": 1,
+   "options": "Statutory Audit\nInternal Audit\nReview Engagement\nAgreed-Upon Procedures\nTax Advisory & Compliance\nTax Litigation\nBookkeeping\nFinancial Statement Compilation\nDue Diligence\nBusiness Valuation\nMerger / Restructuring Advisory\nSECP Secretarial\nForensic Audit\nPayroll Outsourcing\nNPO / Donor Audit\nERP Advisory"
+  },
+  {
+   "fieldname": "column_break_1",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "requires_dedicated_company",
+   "fieldtype": "Check",
+   "label": "Requires Dedicated Company (Data Isolation)",
+   "default": "0",
+   "description": "Checked by default for Bookkeeping templates. When true, submitting an Engagement built from this template auto-provisions an isolated Company + client portal login if one does not already exist for the client — see company_provisioning.py."
+  },
+  {
+   "fieldname": "default_checklist_section",
+   "fieldtype": "Section Break",
+   "label": "Defaults Applied on Engagement Creation"
+  },
+  {
+   "fieldname": "checklist_template",
+   "fieldtype": "Link",
+   "options": "CA Compliance Checklist Template",
+   "label": "Default Compliance Checklist Template"
+  },
+  {
+   "fieldname": "working_paper_set",
+   "fieldtype": "Table",
+   "options": "CA Working Paper Template Item",
+   "label": "Working Paper Skeleton",
+   "description": "Which working papers get auto-created when an engagement is built from this template — see api/working_paper_manager.py."
+  },
+  {
+   "fieldname": "column_break_2",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "required_grades",
+   "fieldtype": "Table",
+   "options": "CA Required Grade",
+   "label": "Required Staff Grades",
+   "description": "Advisory staffing requirement per grade for this engagement type."
+  },
+  {
+   "fieldname": "default_print_format",
+   "fieldtype": "Link",
+   "options": "Print Format",
+   "label": "Default Deliverable Print Format"
+  },
+  {
+   "fieldname": "billing_section",
+   "fieldtype": "Section Break",
+   "label": "Standard Billing Model"
+  },
+  {
+   "fieldname": "default_fee_model",
+   "fieldtype": "Select",
+   "label": "Default Fee Model",
+   "options": "Fixed Fee\nTime & Material\nRetainer\nMilestone\nContingent"
+  },
+  {
+   "fieldname": "column_break_3",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "materiality_benchmark_pct",
+   "fieldtype": "Percent",
+   "label": "Default Materiality Benchmark %",
+   "description": "Applies to audit/review/AUP service lines only; overridable per engagement with Partner approval."
+  }
+ ],
+ "permissions": [
+  {"role": "CA Partner", "read": 1, "write": 1, "create": 1, "delete": 1},
+  {"role": "CA Manager", "read": 1, "write": 1},
+  {"role": "CA Department Supervisor", "read": 1}
+ ]
+}

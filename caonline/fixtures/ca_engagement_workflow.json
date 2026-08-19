@@ -1,0 +1,103 @@
+[
+ {
+  "doctype": "Workflow",
+  "name": "CA Engagement Workflow",
+  "workflow_name": "CA Engagement Workflow",
+  "document_type": "CA Engagement",
+  "is_active": 1,
+  "send_email_alert": 0,
+  "workflow_state_field": "status",
+  "states": [
+   {"state": "Proposal", "doc_status": "0", "allow_edit": "CA Manager"},
+   {"state": "Engagement Letter Signed", "doc_status": "1", "allow_edit": "CA Manager"},
+   {"state": "Planning", "doc_status": "1", "allow_edit": "CA Job Incharge"},
+   {"state": "Fieldwork", "doc_status": "1", "allow_edit": "CA Job Incharge"},
+   {"state": "Review", "doc_status": "1", "allow_edit": "CA Manager"},
+   {"state": "Partner Sign-off", "doc_status": "1", "allow_edit": "CA Partner"},
+   {"state": "Report Issued", "doc_status": "1", "allow_edit": "CA Partner"},
+   {"state": "Billing", "doc_status": "1", "allow_edit": "CA Manager"},
+   {"state": "Closed", "doc_status": "1", "allow_edit": "CA Partner"},
+   {"state": "Archived", "doc_status": "1", "allow_edit": "CA System Admin"}
+  ],
+  "transitions": [
+   {
+    "state": "Proposal",
+    "action": "Sign Engagement Letter",
+    "next_state": "Engagement Letter Signed",
+    "allowed": "CA Partner",
+    "allow_self_approval": 1
+   },
+   {
+    "state": "Engagement Letter Signed",
+    "action": "Begin Planning",
+    "next_state": "Planning",
+    "allowed": "CA Manager",
+    "allow_self_approval": 1
+   },
+   {
+    "state": "Planning",
+    "action": "Start Fieldwork",
+    "next_state": "Fieldwork",
+    "allowed": "CA Job Incharge",
+    "allow_self_approval": 1
+   },
+   {
+    "state": "Fieldwork",
+    "action": "Send for Review",
+    "next_state": "Review",
+    "allowed": "CA Job Incharge",
+    "allow_self_approval": 1
+   },
+   {
+    "state": "Review",
+    "action": "Escalate to Partner",
+    "next_state": "Partner Sign-off",
+    "allowed": "CA Manager",
+    "allow_self_approval": 1,
+    "condition": "doc.open_breach_flags == 0"
+   },
+   {
+    "state": "Review",
+    "action": "Return to Fieldwork",
+    "next_state": "Fieldwork",
+    "allowed": "CA Manager",
+    "allow_self_approval": 1
+   },
+   {
+    "state": "Partner Sign-off",
+    "action": "Issue Report",
+    "next_state": "Report Issued",
+    "allowed": "CA Partner",
+    "allow_self_approval": 1
+   },
+   {
+    "state": "Partner Sign-off",
+    "action": "Return for Rework",
+    "next_state": "Review",
+    "allowed": "CA Partner",
+    "allow_self_approval": 1
+   },
+   {
+    "state": "Report Issued",
+    "action": "Move to Billing",
+    "next_state": "Billing",
+    "allowed": "CA Manager",
+    "allow_self_approval": 1
+   },
+   {
+    "state": "Billing",
+    "action": "Close Engagement",
+    "next_state": "Closed",
+    "allowed": "CA Partner",
+    "allow_self_approval": 1
+   },
+   {
+    "state": "Closed",
+    "action": "Archive",
+    "next_state": "Archived",
+    "allowed": "CA Partner",
+    "allow_self_approval": 1
+   }
+  ]
+ }
+]

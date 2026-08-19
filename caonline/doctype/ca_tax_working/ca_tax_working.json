@@ -1,0 +1,122 @@
+{
+ "doctype": "DocType",
+ "name": "CA Tax Working",
+ "module": "CA Tax",
+ "engine": "InnoDB",
+ "autoname": "format:TAX-{client}-{financial_year}-{#####}",
+ "is_submittable": 1,
+ "track_changes": 1,
+ "fields": [
+  {
+   "fieldname": "core_section",
+   "fieldtype": "Section Break",
+   "label": "Tax Computation"
+  },
+  {
+   "fieldname": "engagement",
+   "fieldtype": "Link",
+   "options": "CA Engagement",
+   "label": "Engagement",
+   "reqd": 1,
+   "in_list_view": 1
+  },
+  {
+   "fieldname": "client",
+   "fieldtype": "Link",
+   "options": "CA Client",
+   "label": "Client",
+   "fetch_from": "engagement.client",
+   "read_only": 1,
+   "in_list_view": 1
+  },
+  {
+   "fieldname": "financial_year",
+   "fieldtype": "Data",
+   "label": "Tax Year",
+   "fetch_from": "engagement.financial_year",
+   "read_only": 1,
+   "in_list_view": 1
+  },
+  {
+   "fieldname": "column_break_1",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "source_financial_statement",
+   "fieldtype": "Link",
+   "options": "CA Financial Statement",
+   "label": "Source Financial Statement",
+   "fetch_from": "engagement.source_financial_statement",
+   "description": "If this client also has a Bookkeeping or Audit engagement in the same year with a Financial Statement already built, the accounting profit below can be pulled from it directly instead of re-summing income/expense by hand."
+  },
+  {
+   "fieldname": "accounting_profit",
+   "fieldtype": "Currency",
+   "label": "Accounting Profit (Per Financial Statements)",
+   "description": "Pull via the 'Pull Accounting Profit from FS' button, or enter manually if no FS is linked."
+  },
+  {
+   "fieldname": "adjustments_section",
+   "fieldtype": "Section Break",
+   "label": "Adjustments"
+  },
+  {
+   "fieldname": "adjustments",
+   "fieldtype": "Table",
+   "options": "CA Tax Adjustment",
+   "label": "Add-backs / Allowances / Credits"
+  },
+  {
+   "fieldname": "computation_section",
+   "fieldtype": "Section Break",
+   "label": "Computation Result"
+  },
+  {
+   "fieldname": "total_addbacks",
+   "fieldtype": "Currency",
+   "label": "Total Add-backs",
+   "read_only": 1
+  },
+  {
+   "fieldname": "total_allowances",
+   "fieldtype": "Currency",
+   "label": "Total Allowances / Deductions",
+   "read_only": 1
+  },
+  {
+   "fieldname": "column_break_2",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "taxable_income",
+   "fieldtype": "Currency",
+   "label": "Taxable Income",
+   "read_only": 1
+  },
+  {
+   "fieldname": "tax_liability",
+   "fieldtype": "Currency",
+   "label": "Tax Liability Before Credits"
+  },
+  {
+   "fieldname": "total_credits",
+   "fieldtype": "Currency",
+   "label": "Total Tax Credits",
+   "read_only": 1
+  },
+  {
+   "fieldname": "net_tax_payable",
+   "fieldtype": "Currency",
+   "label": "Net Tax Payable",
+   "read_only": 1,
+   "bold": 1
+  }
+ ],
+ "permissions": [
+  {"role": "CA Partner", "read": 1, "write": 1, "create": 1, "submit": 1, "cancel": 1, "report": 1},
+  {"role": "CA Manager", "read": 1, "write": 1, "create": 1, "submit": 1},
+  {"role": "CA Job Incharge", "read": 1, "write": 1, "create": 1},
+  {"role": "CA Senior Trainee", "read": 1, "write": 1},
+  {"role": "CA Client Portal", "read": 1}
+ ]
+}

@@ -1,0 +1,82 @@
+{
+ "doctype": "DocType",
+ "name": "CA Review Sign-off",
+ "module": "CA Core",
+ "engine": "InnoDB",
+ "autoname": "hash",
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "track_changes": 1,
+ "fields": [
+  {
+   "fieldname": "core_section",
+   "fieldtype": "Section Break",
+   "label": "Review Sign-off"
+  },
+  {
+   "fieldname": "engagement",
+   "fieldtype": "Link",
+   "options": "CA Engagement",
+   "label": "Engagement",
+   "reqd": 1,
+   "in_list_view": 1,
+   "in_standard_filter": 1
+  },
+  {
+   "fieldname": "review_level",
+   "fieldtype": "Select",
+   "label": "Review Level",
+   "options": "First Reviewer\nSecond Reviewer\nFinal Sign-off",
+   "reqd": 1,
+   "in_list_view": 1,
+   "in_standard_filter": 1,
+   "description": "One generic doctype reused across every level in the hierarchy, keyed by this field, rather than a separate doctype per level — matches the role_on_engagement options already on CA Engagement Team Member."
+  },
+  {
+   "fieldname": "column_break_1",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "reviewer",
+   "fieldtype": "Link",
+   "options": "User",
+   "label": "Reviewer",
+   "reqd": 1,
+   "in_list_view": 1,
+   "description": "Must be staffed on the engagement team in a role matching this review level — enforced in controller."
+  },
+  {
+   "fieldname": "status",
+   "fieldtype": "Select",
+   "label": "Status",
+   "options": "Pending\nSigned Off\nReturned for Rework",
+   "default": "Pending",
+   "in_list_view": 1,
+   "in_standard_filter": 1
+  },
+  {
+   "fieldname": "detail_section",
+   "fieldtype": "Section Break",
+   "label": "Detail"
+  },
+  {
+   "fieldname": "signed_on",
+   "fieldtype": "Date",
+   "label": "Signed On",
+   "read_only": 1
+  },
+  {
+   "fieldname": "comments",
+   "fieldtype": "Small Text",
+   "label": "Comments"
+  }
+ ],
+ "permissions": [
+  {"role": "CA Partner", "read": 1, "write": 1, "create": 1, "delete": 1, "report": 1},
+  {"role": "CA Manager", "read": 1, "write": 1, "create": 1, "report": 1},
+  {"role": "CA Department Supervisor", "read": 1, "write": 1, "create": 1},
+  {"role": "CA Job Incharge", "read": 1, "write": 1, "create": 1},
+  {"role": "CA Senior Trainee", "read": 1},
+  {"role": "CA Junior Trainee", "read": 1}
+ ]
+}

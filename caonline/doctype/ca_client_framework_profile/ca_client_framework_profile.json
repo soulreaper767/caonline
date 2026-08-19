@@ -1,0 +1,91 @@
+{
+ "doctype": "DocType",
+ "name": "CA Client Framework Profile",
+ "module": "CA Compliance",
+ "engine": "InnoDB",
+ "autoname": "hash",
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "track_changes": 1,
+ "fields": [
+  {
+   "fieldname": "core_section",
+   "fieldtype": "Section Break",
+   "label": "Framework Profile"
+  },
+  {
+   "fieldname": "client",
+   "fieldtype": "Link",
+   "options": "CA Client",
+   "label": "Client",
+   "reqd": 1,
+   "in_list_view": 1,
+   "in_standard_filter": 1
+  },
+  {
+   "fieldname": "profile_label",
+   "fieldtype": "Data",
+   "label": "Profile Label",
+   "in_list_view": 1,
+   "description": "e.g. 'FY2026 - Medium-sized Company Framework'"
+  },
+  {
+   "fieldname": "column_break_1",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "is_current",
+   "fieldtype": "Check",
+   "label": "Current Profile",
+   "default": "1",
+   "in_list_view": 1,
+   "description": "Only one profile per client may be current at a time — CA Engagement resolves its framework via {client, is_current:1} in pull_applicable_framework_profile(). Setting this on any profile clears it on every other profile for the same client."
+  },
+  {
+   "fieldname": "effective_from",
+   "fieldtype": "Date",
+   "label": "Effective From",
+   "reqd": 1,
+   "in_list_view": 1
+  },
+  {
+   "fieldname": "effective_to",
+   "fieldtype": "Date",
+   "label": "Effective To"
+  },
+  {
+   "fieldname": "evaluation_section",
+   "fieldtype": "Section Break",
+   "label": "Evaluation"
+  },
+  {
+   "fieldname": "evaluated_by",
+   "fieldtype": "Link",
+   "options": "User",
+   "label": "Evaluated By"
+  },
+  {
+   "fieldname": "evaluation_note",
+   "fieldtype": "Small Text",
+   "label": "Evaluation Note",
+   "description": "Why this profile applies — e.g. a size-threshold crossing that changed which standards apply."
+  },
+  {
+   "fieldname": "standards_section",
+   "fieldtype": "Section Break",
+   "label": "Applicable Standards"
+  },
+  {
+   "fieldname": "applicable_standards",
+   "fieldtype": "Table",
+   "options": "CA Framework Profile Standard",
+   "label": "Applicable Standards"
+  }
+ ],
+ "permissions": [
+  {"role": "CA Partner", "read": 1, "write": 1, "create": 1, "delete": 1},
+  {"role": "CA Manager", "read": 1, "write": 1, "create": 1},
+  {"role": "CA Department Supervisor", "read": 1},
+  {"role": "CA Job Incharge", "read": 1}
+ ]
+}

@@ -1,0 +1,26 @@
+{
+ "doctype": "DocType",
+ "name": "CA Required Grade",
+ "module": "CA Core",
+ "istable": 1,
+ "editable_grid": 1,
+ "engine": "InnoDB",
+ "fields": [
+  {
+   "fieldname": "grade",
+   "fieldtype": "Select",
+   "label": "Grade",
+   "options": "Junior Trainee\nSenior Trainee\nJob Incharge\nDepartment Supervisor\nSuper Supervisor\nManager\nPartner",
+   "reqd": 1,
+   "in_list_view": 1
+  },
+  {
+   "fieldname": "min_headcount",
+   "fieldtype": "Int",
+   "label": "Minimum Headcount",
+   "default": "1",
+   "in_list_view": 1
+  }
+ ],
+ "permissions": []
+}

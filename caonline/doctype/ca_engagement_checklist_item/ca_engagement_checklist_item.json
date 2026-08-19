@@ -1,0 +1,61 @@
+{
+ "doctype": "DocType",
+ "name": "CA Engagement Checklist Item",
+ "module": "CA Compliance",
+ "istable": 1,
+ "editable_grid": 1,
+ "engine": "InnoDB",
+ "fields": [
+  {
+   "fieldname": "item_text",
+   "fieldtype": "Small Text",
+   "label": "Checklist Item",
+   "reqd": 1,
+   "in_list_view": 1
+  },
+  {
+   "fieldname": "category",
+   "fieldtype": "Select",
+   "label": "Category",
+   "options": "Planning\nFieldwork\nCompletion\nReporting",
+   "in_list_view": 1
+  },
+  {
+   "fieldname": "reference",
+   "fieldtype": "Data",
+   "label": "Standard Reference"
+  },
+  {
+   "fieldname": "is_mandatory",
+   "fieldtype": "Check",
+   "label": "Mandatory",
+   "default": "1",
+   "in_list_view": 1
+  },
+  {
+   "fieldname": "checked",
+   "fieldtype": "Check",
+   "label": "Checked",
+   "in_list_view": 1
+  },
+  {
+   "fieldname": "checked_by",
+   "fieldtype": "Link",
+   "options": "User",
+   "label": "Checked By",
+   "read_only": 1
+  },
+  {
+   "fieldname": "checked_on",
+   "fieldtype": "Date",
+   "label": "Checked On",
+   "read_only": 1
+  },
+  {
+   "fieldname": "comment",
+   "fieldtype": "Small Text",
+   "label": "Comment"
+  }
+ ],
+ "permissions": []
+}

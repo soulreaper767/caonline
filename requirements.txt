@@ -1,0 +1,2 @@
+# frappe and erpnext are provided by the bench itself (required_apps in
+# hooks.py enforces erpnext as a dependency at install time)

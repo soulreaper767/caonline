@@ -1,0 +1,31 @@
+{
+ "doctype": "DocType",
+ "name": "CA Framework Profile Standard",
+ "module": "CA Compliance",
+ "istable": 1,
+ "editable_grid": 1,
+ "engine": "InnoDB",
+ "fields": [
+  {
+   "fieldname": "applicable_standard",
+   "fieldtype": "Link",
+   "options": "CA Applicable Standard",
+   "label": "Applicable Standard",
+   "reqd": 1,
+   "in_list_view": 1
+  },
+  {
+   "fieldname": "is_mandatory",
+   "fieldtype": "Check",
+   "label": "Mandatory",
+   "default": "1",
+   "in_list_view": 1
+  },
+  {
+   "fieldname": "notes",
+   "fieldtype": "Small Text",
+   "label": "Notes"
+  }
+ ],
+ "permissions": []
+}

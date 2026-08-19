@@ -1,0 +1,76 @@
+{
+ "doctype": "DocType",
+ "name": "CA Engagement Checklist",
+ "module": "CA Compliance",
+ "engine": "InnoDB",
+ "autoname": "format:CHK-{engagement}-{#####}",
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "track_changes": 1,
+ "fields": [
+  {
+   "fieldname": "core_section",
+   "fieldtype": "Section Break",
+   "label": "Engagement Checklist"
+  },
+  {
+   "fieldname": "engagement",
+   "fieldtype": "Link",
+   "options": "CA Engagement",
+   "label": "Engagement",
+   "reqd": 1,
+   "in_list_view": 1,
+   "in_standard_filter": 1
+  },
+  {
+   "fieldname": "checklist_template",
+   "fieldtype": "Link",
+   "options": "CA Compliance Checklist Template",
+   "label": "Source Template",
+   "read_only": 1
+  },
+  {
+   "fieldname": "column_break_1",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "total_items",
+   "fieldtype": "Int",
+   "label": "Total Items",
+   "read_only": 1
+  },
+  {
+   "fieldname": "completed_items",
+   "fieldtype": "Int",
+   "label": "Completed Items",
+   "read_only": 1
+  },
+  {
+   "fieldname": "percent_complete",
+   "fieldtype": "Percent",
+   "label": "Percent Complete",
+   "read_only": 1,
+   "in_list_view": 1
+  },
+  {
+   "fieldname": "items_section",
+   "fieldtype": "Section Break",
+   "label": "Items"
+  },
+  {
+   "fieldname": "items",
+   "fieldtype": "Table",
+   "options": "CA Engagement Checklist Item",
+   "label": "Items"
+  }
+ ],
+ "permissions": [
+  {"role": "CA Partner", "read": 1, "write": 1, "create": 1, "delete": 1, "report": 1},
+  {"role": "CA Manager", "read": 1, "write": 1, "create": 1, "report": 1},
+  {"role": "CA Department Supervisor", "read": 1, "write": 1},
+  {"role": "CA Job Incharge", "read": 1, "write": 1},
+  {"role": "CA Senior Trainee", "read": 1, "write": 1},
+  {"role": "CA Junior Trainee", "read": 1, "write": 1},
+  {"role": "CA QCR Reviewer", "read": 1}
+ ]
+}

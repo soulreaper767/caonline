@@ -1,0 +1,86 @@
+{
+ "doctype": "DocType",
+ "name": "CA Query Point",
+ "module": "CA Core",
+ "engine": "InnoDB",
+ "autoname": "hash",
+ "fields": [
+  {
+   "fieldname": "engagement",
+   "fieldtype": "Link",
+   "options": "CA Engagement",
+   "label": "Engagement",
+   "reqd": 1,
+   "in_list_view": 1,
+   "in_standard_filter": 1
+  },
+  {
+   "fieldname": "working_paper",
+   "fieldtype": "Link",
+   "options": "CA Working Paper",
+   "label": "Working Paper"
+  },
+  {
+   "fieldname": "raised_by",
+   "fieldtype": "Link",
+   "options": "User",
+   "label": "Raised By",
+   "read_only": 1,
+   "default": "__user"
+  },
+  {
+   "fieldname": "assigned_to",
+   "fieldtype": "Link",
+   "options": "User",
+   "label": "Assigned To (Preparer)",
+   "reqd": 1,
+   "in_list_view": 1
+  },
+  {
+   "fieldname": "column_break_1",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "severity",
+   "fieldtype": "Select",
+   "label": "Severity",
+   "options": "Breach\nJudgment Required\nDisclosure Gap\nObservation",
+   "in_list_view": 1,
+   "in_standard_filter": 1
+  },
+  {
+   "fieldname": "status",
+   "fieldtype": "Select",
+   "label": "Status",
+   "options": "Open\nCleared\nClosed",
+   "default": "Open",
+   "in_list_view": 1,
+   "in_standard_filter": 1
+  },
+  {
+   "fieldname": "point_text",
+   "fieldtype": "Text",
+   "label": "Query / Point",
+   "reqd": 1
+  },
+  {
+   "fieldname": "resolution_note",
+   "fieldtype": "Text",
+   "label": "Resolution Note"
+  },
+  {
+   "fieldname": "cleared_by",
+   "fieldtype": "Link",
+   "options": "User",
+   "label": "Cleared By",
+   "read_only": 1
+  }
+ ],
+ "permissions": [
+  {"role": "CA Partner", "read": 1, "write": 1, "create": 1, "delete": 1},
+  {"role": "CA Manager", "read": 1, "write": 1, "create": 1},
+  {"role": "CA Job Incharge", "read": 1, "write": 1, "create": 1},
+  {"role": "CA Senior Trainee", "read": 1, "write": 1, "if_owner": 0},
+  {"role": "CA Junior Trainee", "read": 1, "write": 1, "if_owner": 0}
+ ]
+}

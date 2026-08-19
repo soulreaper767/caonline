@@ -1,0 +1,35 @@
+[
+ {
+  "doctype": "Custom Field",
+  "dt": "Timesheet Detail",
+  "fieldname": "ca_engagement",
+  "label": "CA Engagement",
+  "fieldtype": "Link",
+  "options": "CA Engagement",
+  "insert_after": "activity_type",
+  "in_list_view": 1,
+  "description": "Which engagement this logged time belongs to. Set this before ca_engagement_task so the task dropdown can be filtered to tasks on the same engagement."
+ },
+ {
+  "doctype": "Custom Field",
+  "dt": "Timesheet Detail",
+  "fieldname": "ca_engagement_task",
+  "label": "CA Engagement Task",
+  "fieldtype": "Link",
+  "options": "CA Engagement Task",
+  "insert_after": "ca_engagement",
+  "in_list_view": 1,
+  "description": "Which specific task/audit head this logged time is against. Drives CA Engagement Task.actual_hours — see recompute_actual_hours() in ca_engagement_task.py."
+ },
+ {
+  "doctype": "Custom Field",
+  "dt": "Timesheet",
+  "fieldname": "ca_grade_at_entry",
+  "label": "Grade at Time of Entry",
+  "fieldtype": "Select",
+  "options": "Junior Trainee\nSenior Trainee\nJob Incharge\nDepartment Supervisor\nSuper Supervisor\nManager\nPartner",
+  "insert_after": "employee",
+  "read_only": 1,
+  "description": "Snapshot of the staff member's grade at the time the timesheet was created, so a later promotion doesn't retroactively change historical WIP rate calculations (build prompt Section 10 / CA Billing Rate Card)."
+ }
+]

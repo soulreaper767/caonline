@@ -1,0 +1,112 @@
+{
+ "doctype": "DocType",
+ "name": "CA WIP Entry",
+ "module": "CA Billing",
+ "engine": "InnoDB",
+ "autoname": "format:WIP-{engagement}-{#####}",
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "fields": [
+  {
+   "fieldname": "core_section",
+   "fieldtype": "Section Break",
+   "label": "WIP Entry"
+  },
+  {
+   "fieldname": "timesheet",
+   "fieldtype": "Link",
+   "options": "Timesheet",
+   "label": "Timesheet",
+   "reqd": 1,
+   "in_list_view": 1,
+   "description": "One CA WIP Entry per (Timesheet, Engagement) pair — a single Timesheet can carry rows against more than one engagement, so its logged time is split across one WIP Entry per engagement, not one entry per Timesheet."
+  },
+  {
+   "fieldname": "engagement",
+   "fieldtype": "Link",
+   "options": "CA Engagement",
+   "label": "Engagement",
+   "reqd": 1,
+   "in_list_view": 1,
+   "in_standard_filter": 1
+  },
+  {
+   "fieldname": "column_break_1",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "staff_user",
+   "fieldtype": "Link",
+   "options": "User",
+   "label": "Staff Member",
+   "read_only": 1,
+   "in_list_view": 1
+  },
+  {
+   "fieldname": "grade",
+   "fieldtype": "Select",
+   "label": "Grade",
+   "options": "Junior Trainee\nSenior Trainee\nJob Incharge\nDepartment Supervisor\nSuper Supervisor\nManager\nPartner",
+   "read_only": 1,
+   "in_list_view": 1,
+   "description": "Fetched from Timesheet.ca_grade_at_entry — a later promotion never retroactively changes historical WIP valuation."
+  },
+  {
+   "fieldname": "valuation_section",
+   "fieldtype": "Section Break",
+   "label": "Valuation"
+  },
+  {
+   "fieldname": "hours",
+   "fieldtype": "Float",
+   "label": "Hours",
+   "read_only": 1,
+   "in_list_view": 1,
+   "description": "Sum of this Timesheet's rows where ca_engagement matches this engagement."
+  },
+  {
+   "fieldname": "hourly_rate",
+   "fieldtype": "Currency",
+   "label": "Hourly Rate (PKR)",
+   "read_only": 1,
+   "description": "Looked up from CA Billing Rate Card for this grade/service line as of the timesheet's date."
+  },
+  {
+   "fieldname": "column_break_2",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "billable_value",
+   "fieldtype": "Currency",
+   "label": "Billable Value (PKR)",
+   "read_only": 1,
+   "bold": 1,
+   "in_list_view": 1
+  },
+  {
+   "fieldname": "billing_section",
+   "fieldtype": "Section Break",
+   "label": "Billing Status"
+  },
+  {
+   "fieldname": "billed",
+   "fieldtype": "Check",
+   "label": "Billed",
+   "default": "0",
+   "in_list_view": 1,
+   "in_standard_filter": 1
+  },
+  {
+   "fieldname": "sales_invoice",
+   "fieldtype": "Link",
+   "options": "Sales Invoice",
+   "label": "Sales Invoice",
+   "read_only": 1
+  }
+ ],
+ "permissions": [
+  {"role": "CA Partner", "read": 1, "write": 1, "report": 1, "export": 1},
+  {"role": "CA Manager", "read": 1, "write": 1, "report": 1, "export": 1},
+  {"role": "CA Department Supervisor", "read": 1}
+ ]
+}

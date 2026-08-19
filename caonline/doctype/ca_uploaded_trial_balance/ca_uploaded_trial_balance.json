@@ -1,0 +1,83 @@
+{
+ "doctype": "DocType",
+ "name": "CA Uploaded Trial Balance",
+ "module": "CA Core",
+ "engine": "InnoDB",
+ "autoname": "format:TB-{client}-{financial_year}-{#####}",
+ "fields": [
+  {
+   "fieldname": "client",
+   "fieldtype": "Link",
+   "options": "CA Client",
+   "label": "Client",
+   "reqd": 1,
+   "in_list_view": 1
+  },
+  {
+   "fieldname": "financial_year",
+   "fieldtype": "Data",
+   "label": "Financial Year / Period",
+   "reqd": 1,
+   "in_list_view": 1
+  },
+  {
+   "fieldname": "column_break_1",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "source_file",
+   "fieldtype": "Attach",
+   "label": "Uploaded File (Excel/CSV)"
+  },
+  {
+   "fieldname": "uploaded_by_client",
+   "fieldtype": "Check",
+   "label": "Uploaded via Client Portal",
+   "read_only": 1
+  },
+  {
+   "fieldname": "lines_section",
+   "fieldtype": "Section Break",
+   "label": "Trial Balance Lines"
+  },
+  {
+   "fieldname": "lines",
+   "fieldtype": "Table",
+   "options": "CA TB Mapped Line",
+   "label": "Lines"
+  },
+  {
+   "fieldname": "control_section",
+   "fieldtype": "Section Break",
+   "label": "Control Total"
+  },
+  {
+   "fieldname": "total_debit",
+   "fieldtype": "Currency",
+   "label": "Total Debit",
+   "read_only": 1
+  },
+  {
+   "fieldname": "column_break_2",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "total_credit",
+   "fieldtype": "Currency",
+   "label": "Total Credit",
+   "read_only": 1
+  },
+  {
+   "fieldname": "ties_out",
+   "fieldtype": "Check",
+   "label": "Debit = Credit",
+   "read_only": 1
+  }
+ ],
+ "permissions": [
+  {"role": "CA Manager", "read": 1, "write": 1, "create": 1, "delete": 1},
+  {"role": "CA Job Incharge", "read": 1, "write": 1, "create": 1},
+  {"role": "CA Senior Trainee", "read": 1, "write": 1},
+  {"role": "CA Client Portal", "read": 1, "write": 1, "create": 1}
+ ]
+}

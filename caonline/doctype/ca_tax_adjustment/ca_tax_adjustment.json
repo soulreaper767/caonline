@@ -1,0 +1,46 @@
+{
+ "doctype": "DocType",
+ "name": "CA Tax Adjustment",
+ "module": "CA Tax",
+ "istable": 1,
+ "editable_grid": 1,
+ "engine": "InnoDB",
+ "fields": [
+  {
+   "fieldname": "adjustment_type",
+   "fieldtype": "Select",
+   "label": "Type",
+   "options": "Add-back (Inadmissible Expense)\nAllowance / Deduction\nTax Credit\nOther Adjustment",
+   "in_list_view": 1,
+   "reqd": 1
+  },
+  {
+   "fieldname": "description",
+   "fieldtype": "Data",
+   "label": "Description",
+   "in_list_view": 1,
+   "reqd": 1
+  },
+  {
+   "fieldname": "amount",
+   "fieldtype": "Currency",
+   "label": "Amount (PKR)",
+   "in_list_view": 1
+  },
+  {
+   "fieldname": "ito_reference",
+   "fieldtype": "Data",
+   "label": "ITO 2001 Section Reference",
+   "in_list_view": 1,
+   "description": "e.g. 'Section 21(c)' for an inadmissible expense — keeps the computation defensible on assessment/appeal."
+  },
+  {
+   "fieldname": "linked_fs_line",
+   "fieldtype": "Link",
+   "options": "CA Standard FS Line",
+   "label": "Linked FS Line",
+   "description": "Where this adjustment traces back to in the source Financial Statement, for audit-trail purposes."
+  }
+ ],
+ "permissions": []
+}

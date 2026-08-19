@@ -1,0 +1,74 @@
+{
+ "doctype": "DocType",
+ "name": "CA Internal Audit Finding",
+ "module": "CA Audit",
+ "engine": "InnoDB",
+ "autoname": "hash",
+ "fields": [
+  {
+   "fieldname": "internal_audit_plan",
+   "fieldtype": "Link",
+   "options": "CA Internal Audit Plan",
+   "label": "Internal Audit Plan",
+   "reqd": 1,
+   "in_list_view": 1
+  },
+  {
+   "fieldname": "auditable_area",
+   "fieldtype": "Data",
+   "label": "Auditable Area",
+   "in_list_view": 1
+  },
+  {
+   "fieldname": "finding",
+   "fieldtype": "Text",
+   "label": "Finding",
+   "reqd": 1
+  },
+  {
+   "fieldname": "risk_rating",
+   "fieldtype": "Select",
+   "label": "Risk Rating",
+   "options": "Low\nMedium\nHigh\nCritical",
+   "in_list_view": 1
+  },
+  {
+   "fieldname": "column_break_1",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "management_response",
+   "fieldtype": "Text",
+   "label": "Management Response"
+  },
+  {
+   "fieldname": "remediation_owner",
+   "fieldtype": "Data",
+   "label": "Remediation Owner (Client-side)"
+  },
+  {
+   "fieldname": "target_closure_date",
+   "fieldtype": "Date",
+   "label": "Target Closure Date",
+   "in_list_view": 1
+  },
+  {
+   "fieldname": "status",
+   "fieldtype": "Select",
+   "label": "Status",
+   "options": "Open\nRemediated - Pending Re-test\nRe-tested - Closed\nRe-tested - Still Open",
+   "default": "Open",
+   "in_list_view": 1
+  },
+  {
+   "fieldname": "retest_note",
+   "fieldtype": "Small Text",
+   "label": "Re-test Note"
+  }
+ ],
+ "permissions": [
+  {"role": "CA Manager", "read": 1, "write": 1, "create": 1},
+  {"role": "CA Job Incharge", "read": 1, "write": 1, "create": 1},
+  {"role": "CA Senior Trainee", "read": 1, "write": 1, "create": 1}
+ ]
+}

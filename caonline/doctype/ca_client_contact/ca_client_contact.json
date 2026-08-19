@@ -1,0 +1,49 @@
+{
+ "doctype": "DocType",
+ "name": "CA Client Contact",
+ "module": "CA Core",
+ "istable": 1,
+ "editable_grid": 1,
+ "engine": "InnoDB",
+ "fields": [
+  {
+   "fieldname": "contact",
+   "fieldtype": "Link",
+   "options": "Contact",
+   "label": "Contact",
+   "reqd": 1,
+   "in_list_view": 1
+  },
+  {
+   "fieldname": "designation",
+   "fieldtype": "Data",
+   "label": "Designation",
+   "in_list_view": 1
+  },
+  {
+   "fieldname": "portal_contact_role",
+   "fieldtype": "Select",
+   "label": "Portal Contact Role",
+   "options": "Primary / Authorized Signatory\nFinance / Tax Contact\nRead-only Viewer",
+   "reqd": 1,
+   "in_list_view": 1,
+   "description": "Controls which engagement types and document areas this contact can see once their portal login is created."
+  },
+  {
+   "fieldname": "portal_user",
+   "fieldtype": "Link",
+   "options": "User",
+   "label": "Linked Portal User",
+   "read_only": 1,
+   "description": "Auto-set when the portal login is provisioned for this contact."
+  },
+  {
+   "fieldname": "is_active",
+   "fieldtype": "Check",
+   "label": "Active",
+   "default": "1",
+   "in_list_view": 1
+  }
+ ],
+ "permissions": []
+}

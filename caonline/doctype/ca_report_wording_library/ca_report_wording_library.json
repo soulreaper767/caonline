@@ -1,0 +1,76 @@
+{
+ "doctype": "DocType",
+ "name": "CA Report Wording Library",
+ "module": "CA Reports",
+ "engine": "InnoDB",
+ "autoname": "field:wording_key",
+ "title_field": "title",
+ "fields": [
+  {
+   "fieldname": "wording_key",
+   "fieldtype": "Data",
+   "label": "Wording Key",
+   "reqd": 1,
+   "unique": 1,
+   "in_list_view": 1,
+   "description": "Stable machine key referenced from Print Format Jinja, e.g. 'audit_opinion_unqualified', 'disclaimer_standard'."
+  },
+  {
+   "fieldname": "title",
+   "fieldtype": "Data",
+   "label": "Title",
+   "reqd": 1,
+   "in_list_view": 1
+  },
+  {
+   "fieldname": "column_break_1",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "category",
+   "fieldtype": "Select",
+   "label": "Category",
+   "options": "Audit Opinion\nReview Conclusion\nDisclaimer / Scope Limitation\nEmphasis of Matter\nManagement Letter Boilerplate\nEngagement Letter Clause\nOther",
+   "in_list_view": 1,
+   "in_standard_filter": 1
+  },
+  {
+   "fieldname": "applicable_service_line",
+   "fieldtype": "Select",
+   "label": "Applicable Service Line",
+   "options": "\nStatutory Audit\nInternal Audit\nReview Engagement\nAgreed-Upon Procedures\nTax Advisory & Compliance\nTax Litigation\nBookkeeping\nFinancial Statement Compilation\nDue Diligence\nBusiness Valuation\nMerger / Restructuring Advisory\nSECP Secretarial\nForensic Audit\nPayroll Outsourcing\nNPO / Donor Audit\nERP Advisory"
+  },
+  {
+   "fieldname": "is_active",
+   "fieldtype": "Check",
+   "label": "Active",
+   "default": "1",
+   "in_list_view": 1
+  },
+  {
+   "fieldname": "content_section",
+   "fieldtype": "Section Break",
+   "label": "Wording"
+  },
+  {
+   "fieldname": "wording_text",
+   "fieldtype": "Text Editor",
+   "label": "Wording Text",
+   "reqd": 1,
+   "description": "Ships empty — the firm's own standard wording is entered here, never pre-loaded."
+  },
+  {
+   "fieldname": "version_note",
+   "fieldtype": "Small Text",
+   "label": "Version Note"
+  }
+ ],
+ "permissions": [
+  {"role": "CA Partner", "read": 1, "write": 1, "create": 1, "delete": 1, "export": 1},
+  {"role": "CA Manager", "read": 1, "write": 1, "create": 1, "export": 1},
+  {"role": "CA Department Supervisor", "read": 1},
+  {"role": "CA Job Incharge", "read": 1},
+  {"role": "CA Senior Trainee", "read": 1},
+  {"role": "CA Junior Trainee", "read": 1}
+ ]
+}

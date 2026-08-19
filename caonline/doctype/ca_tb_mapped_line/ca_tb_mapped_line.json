@@ -1,0 +1,38 @@
+{
+ "doctype": "DocType",
+ "name": "CA TB Mapped Line",
+ "module": "CA Core",
+ "istable": 1,
+ "editable_grid": 1,
+ "engine": "InnoDB",
+ "fields": [
+  {
+   "fieldname": "client_account_name",
+   "fieldtype": "Data",
+   "label": "Client Account Name",
+   "in_list_view": 1,
+   "reqd": 1
+  },
+  {
+   "fieldname": "debit",
+   "fieldtype": "Currency",
+   "label": "Debit",
+   "in_list_view": 1
+  },
+  {
+   "fieldname": "credit",
+   "fieldtype": "Currency",
+   "label": "Credit",
+   "in_list_view": 1
+  },
+  {
+   "fieldname": "mapped_fs_line",
+   "fieldtype": "Link",
+   "options": "CA Standard FS Line",
+   "label": "Mapped Standard FS Line",
+   "in_list_view": 1,
+   "description": "Auto-suggested from CA Client Account Mapping (this client's prior-period mapping), editable."
+  }
+ ],
+ "permissions": []
+}

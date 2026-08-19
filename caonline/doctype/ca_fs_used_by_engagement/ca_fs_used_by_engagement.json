@@ -1,0 +1,25 @@
+{
+ "doctype": "DocType",
+ "name": "CA FS Used By Engagement",
+ "module": "CA Core",
+ "istable": 1,
+ "engine": "InnoDB",
+ "fields": [
+  {
+   "fieldname": "engagement",
+   "fieldtype": "Link",
+   "options": "CA Engagement",
+   "label": "Engagement",
+   "in_list_view": 1,
+   "reqd": 1
+  },
+  {
+   "fieldname": "usage_type",
+   "fieldtype": "Select",
+   "label": "Usage",
+   "options": "Subject of Audit\nSubject of Review\nCompilation Output\nFeeds Tax Computation\nReference Only",
+   "in_list_view": 1
+  }
+ ],
+ "permissions": []
+}

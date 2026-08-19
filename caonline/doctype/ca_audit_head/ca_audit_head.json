@@ -1,0 +1,49 @@
+{
+ "doctype": "DocType",
+ "name": "CA Audit Head",
+ "module": "CA Audit",
+ "engine": "InnoDB",
+ "autoname": "field:head_name",
+ "fields": [
+  {
+   "fieldname": "head_name",
+   "fieldtype": "Data",
+   "label": "Audit Head",
+   "reqd": 1,
+   "unique": 1,
+   "in_list_view": 1,
+   "description": "The assignable work area a team member is actually staffed on — e.g. 'Other Income', 'Loans & Advances - Non-Performing', 'PPE & Depreciation', 'Related Party Transactions'. Coarser than a single GL account, finer than a whole engagement."
+  },
+  {
+   "fieldname": "default_risk_rating",
+   "fieldtype": "Select",
+   "label": "Default Risk Rating",
+   "options": "Low\nMedium\nHigh",
+   "in_list_view": 1
+  },
+  {
+   "fieldname": "column_break_1",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "typical_min_grade",
+   "fieldtype": "Select",
+   "label": "Typical Minimum Grade",
+   "options": "Junior Trainee\nSenior Trainee\nJob Incharge\nDepartment Supervisor\nManager\nPartner",
+   "description": "Advisory only — surfaced to the Assignment Manager as a suggestion, e.g. NPL provisioning typically shouldn't be assigned to a first-year Junior Trainee unsupervised."
+  },
+  {
+   "fieldname": "standard_procedure_reference",
+   "fieldtype": "Small Text",
+   "label": "Standard Audit Procedure Reference",
+   "description": "Pointer into the firm's audit program library / precedent for this head."
+  }
+ ],
+ "permissions": [
+  {"role": "CA Partner", "read": 1, "write": 1, "create": 1, "delete": 1},
+  {"role": "CA Manager", "read": 1, "write": 1},
+  {"role": "CA Job Incharge", "read": 1},
+  {"role": "CA Senior Trainee", "read": 1},
+  {"role": "CA Junior Trainee", "read": 1}
+ ]
+}

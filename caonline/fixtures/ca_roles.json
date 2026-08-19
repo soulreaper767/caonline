@@ -1,0 +1,150 @@
+[
+ {
+  "doctype": "Role",
+  "role_name": "CA Junior Trainee",
+  "desk_access": 1,
+  "disabled": 0
+ },
+ {
+  "doctype": "Role",
+  "role_name": "CA Senior Trainee",
+  "desk_access": 1,
+  "disabled": 0
+ },
+ {
+  "doctype": "Role",
+  "role_name": "CA Job Incharge",
+  "desk_access": 1,
+  "disabled": 0
+ },
+ {
+  "doctype": "Role",
+  "role_name": "CA Department Supervisor",
+  "desk_access": 1,
+  "disabled": 0
+ },
+ {
+  "doctype": "Role",
+  "role_name": "CA Super Supervisor",
+  "desk_access": 1,
+  "disabled": 0
+ },
+ {
+  "doctype": "Role",
+  "role_name": "CA Manager",
+  "desk_access": 1,
+  "disabled": 0
+ },
+ {
+  "doctype": "Role",
+  "role_name": "CA Partner",
+  "desk_access": 1,
+  "disabled": 0
+ },
+ {
+  "doctype": "Role",
+  "role_name": "CA QCR Reviewer",
+  "desk_access": 1,
+  "disabled": 0
+ },
+ {
+  "doctype": "Role",
+  "role_name": "CA Subcontractor",
+  "desk_access": 1,
+  "disabled": 0
+ },
+ {
+  "doctype": "Role",
+  "role_name": "CA Client Portal",
+  "desk_access": 0,
+  "disabled": 0
+ },
+ {
+  "doctype": "Role",
+  "role_name": "CA System Admin",
+  "desk_access": 1,
+  "disabled": 0
+ },
+
+ {
+  "doctype": "Role Profile",
+  "role_profile": "CA - Junior Trainee",
+  "roles": [{"role": "CA Junior Trainee"}]
+ },
+ {
+  "doctype": "Role Profile",
+  "role_profile": "CA - Senior Trainee",
+  "roles": [{"role": "CA Junior Trainee"}, {"role": "CA Senior Trainee"}]
+ },
+ {
+  "doctype": "Role Profile",
+  "role_profile": "CA - Job Incharge",
+  "roles": [
+   {"role": "CA Junior Trainee"},
+   {"role": "CA Senior Trainee"},
+   {"role": "CA Job Incharge"}
+  ]
+ },
+ {
+  "doctype": "Role Profile",
+  "role_profile": "CA - Department Supervisor",
+  "roles": [
+   {"role": "CA Junior Trainee"},
+   {"role": "CA Senior Trainee"},
+   {"role": "CA Job Incharge"},
+   {"role": "CA Department Supervisor"}
+  ]
+ },
+ {
+  "doctype": "Role Profile",
+  "role_profile": "CA - Super Supervisor",
+  "roles": [
+   {"role": "CA Junior Trainee"},
+   {"role": "CA Senior Trainee"},
+   {"role": "CA Job Incharge"},
+   {"role": "CA Department Supervisor"},
+   {"role": "CA Super Supervisor"}
+  ]
+ },
+ {
+  "doctype": "Role Profile",
+  "role_profile": "CA - Manager",
+  "roles": [
+   {"role": "CA Junior Trainee"},
+   {"role": "CA Senior Trainee"},
+   {"role": "CA Job Incharge"},
+   {"role": "CA Department Supervisor"},
+   {"role": "CA Super Supervisor"},
+   {"role": "CA Manager"}
+  ]
+ },
+ {
+  "doctype": "Role Profile",
+  "role_profile": "CA - Partner",
+  "roles": [
+   {"role": "CA Junior Trainee"},
+   {"role": "CA Senior Trainee"},
+   {"role": "CA Job Incharge"},
+   {"role": "CA Department Supervisor"},
+   {"role": "CA Super Supervisor"},
+   {"role": "CA Manager"},
+   {"role": "CA Partner"}
+  ]
+ },
+ {
+  "doctype": "Role Profile",
+  "role_profile": "CA - QCR Reviewer",
+  "roles": [{"role": "CA QCR Reviewer"}],
+  "description": "Deliberately does NOT stack on the delivery hierarchy — a QCR Reviewer must stay independent of the engagement team being reviewed."
+ },
+ {
+  "doctype": "Role Profile",
+  "role_profile": "CA - Subcontractor",
+  "roles": [{"role": "CA Subcontractor"}]
+ },
+ {
+  "doctype": "Role Profile",
+  "role_profile": "CA - Client Portal",
+  "roles": [{"role": "CA Client Portal"}]
+ }
+]

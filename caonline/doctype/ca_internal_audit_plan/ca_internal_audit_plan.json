@@ -1,0 +1,61 @@
+{
+ "doctype": "DocType",
+ "name": "CA Internal Audit Plan",
+ "module": "CA Audit",
+ "engine": "InnoDB",
+ "autoname": "format:IAP-{client}-{plan_year}-{#####}",
+ "is_submittable": 1,
+ "fields": [
+  {
+   "fieldname": "engagement",
+   "fieldtype": "Link",
+   "options": "CA Engagement",
+   "label": "Engagement",
+   "reqd": 1,
+   "in_list_view": 1
+  },
+  {
+   "fieldname": "client",
+   "fieldtype": "Link",
+   "options": "CA Client",
+   "label": "Client",
+   "fetch_from": "engagement.client",
+   "read_only": 1,
+   "in_list_view": 1
+  },
+  {
+   "fieldname": "plan_year",
+   "fieldtype": "Data",
+   "label": "Plan Year",
+   "reqd": 1,
+   "in_list_view": 1
+  },
+  {
+   "fieldname": "column_break_1",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "client_also_audit_client",
+   "fieldtype": "Check",
+   "label": "Client Also a Statutory Audit Client",
+   "read_only": 1,
+   "description": "Auto-computed. Where true, independence documentation must explicitly record that the Internal Audit and Statutory Audit teams are segregated — see ca_internal_audit_plan.py."
+  },
+  {
+   "fieldname": "areas_section",
+   "fieldtype": "Section Break",
+   "label": "Risk-Based Auditable Universe"
+  },
+  {
+   "fieldname": "areas",
+   "fieldtype": "Table",
+   "options": "CA Internal Audit Area",
+   "label": "Auditable Areas"
+  }
+ ],
+ "permissions": [
+  {"role": "CA Partner", "read": 1, "write": 1, "create": 1, "submit": 1, "report": 1},
+  {"role": "CA Manager", "read": 1, "write": 1, "create": 1, "submit": 1},
+  {"role": "CA Job Incharge", "read": 1, "write": 1}
+ ]
+}

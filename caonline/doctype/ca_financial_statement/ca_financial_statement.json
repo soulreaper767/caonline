@@ -1,0 +1,133 @@
+{
+ "doctype": "DocType",
+ "name": "CA Financial Statement",
+ "module": "CA Core",
+ "engine": "InnoDB",
+ "autoname": "format:FS-{client}-{financial_year}-{#####}",
+ "title_field": "title",
+ "is_submittable": 1,
+ "track_changes": 1,
+ "fields": [
+  {
+   "fieldname": "core_section",
+   "fieldtype": "Section Break",
+   "label": "Financial Statement"
+  },
+  {
+   "fieldname": "client",
+   "fieldtype": "Link",
+   "options": "CA Client",
+   "label": "Client",
+   "reqd": 1,
+   "in_list_view": 1,
+   "in_standard_filter": 1
+  },
+  {
+   "fieldname": "financial_year",
+   "fieldtype": "Data",
+   "label": "Financial Year / Period",
+   "reqd": 1,
+   "in_list_view": 1
+  },
+  {
+   "fieldname": "title",
+   "fieldtype": "Data",
+   "label": "Title",
+   "read_only": 1
+  },
+  {
+   "fieldname": "column_break_1",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "data_source",
+   "fieldtype": "Select",
+   "label": "Data Source",
+   "options": "Live from Linked Bookkeeping Company\nUploaded Trial Balance",
+   "reqd": 1,
+   "in_list_view": 1,
+   "description": "'Live' is only available if this client has an active Bookkeeping engagement with a linked_company — see fs_integration.get_source_trial_balance(). Otherwise the FS is built from a CA Uploaded Trial Balance."
+  },
+  {
+   "fieldname": "source_bookkeeping_engagement",
+   "fieldtype": "Link",
+   "options": "CA Engagement",
+   "label": "Source Bookkeeping Engagement",
+   "read_only": 1,
+   "depends_on": "eval:doc.data_source=='Live from Linked Bookkeeping Company'",
+   "description": "Auto-set when data_source is Live. This is the audit-trail link proving where the numbers came from."
+  },
+  {
+   "fieldname": "source_uploaded_trial_balance",
+   "fieldtype": "Link",
+   "options": "CA Uploaded Trial Balance",
+   "label": "Source Uploaded Trial Balance",
+   "depends_on": "eval:doc.data_source=='Uploaded Trial Balance'"
+  },
+  {
+   "fieldname": "used_by_section",
+   "fieldtype": "Section Break",
+   "label": "Used By Engagements"
+  },
+  {
+   "fieldname": "used_by_engagements",
+   "fieldtype": "Table MultiSelect",
+   "options": "CA FS Used By Engagement",
+   "label": "Engagements Using This FS",
+   "description": "One Financial Statement can serve a Compilation engagement, be the subject of the Audit engagement, feed the Tax Working's accounting profit, and be reviewed under a Review engagement — all for the same client/year, without re-entering data. See fs_integration.link_fs_to_engagement()."
+  },
+  {
+   "fieldname": "lines_section",
+   "fieldtype": "Section Break",
+   "label": "Mapped Line Items"
+  },
+  {
+   "fieldname": "line_items",
+   "fieldtype": "Table",
+   "options": "CA FS Line Item",
+   "label": "Line Items"
+  },
+  {
+   "fieldname": "totals_section",
+   "fieldtype": "Section Break",
+   "label": "Control Totals"
+  },
+  {
+   "fieldname": "total_assets",
+   "fieldtype": "Currency",
+   "label": "Total Assets",
+   "read_only": 1
+  },
+  {
+   "fieldname": "total_liabilities_equity",
+   "fieldtype": "Currency",
+   "label": "Total Liabilities + Equity",
+   "read_only": 1
+  },
+  {
+   "fieldname": "column_break_2",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "balances",
+   "fieldtype": "Check",
+   "label": "Balance Sheet Balances",
+   "read_only": 1
+  },
+  {
+   "fieldname": "open_rule_flags",
+   "fieldtype": "Int",
+   "label": "Open Rule Flags on This FS",
+   "read_only": 1
+  }
+ ],
+ "permissions": [
+  {"role": "CA Partner", "read": 1, "write": 1, "create": 1, "submit": 1, "cancel": 1, "report": 1, "export": 1},
+  {"role": "CA Manager", "read": 1, "write": 1, "create": 1, "submit": 1, "report": 1},
+  {"role": "CA Job Incharge", "read": 1, "write": 1},
+  {"role": "CA Senior Trainee", "read": 1, "write": 1},
+  {"role": "CA Junior Trainee", "read": 1},
+  {"role": "CA QCR Reviewer", "read": 1},
+  {"role": "CA Client Portal", "read": 1}
+ ]
+}

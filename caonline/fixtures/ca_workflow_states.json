@@ -1,0 +1,12 @@
+[
+ {"doctype": "Workflow State", "workflow_state_name": "Proposal", "style": "Primary"},
+ {"doctype": "Workflow State", "workflow_state_name": "Engagement Letter Signed", "style": "Primary"},
+ {"doctype": "Workflow State", "workflow_state_name": "Planning", "style": "Warning"},
+ {"doctype": "Workflow State", "workflow_state_name": "Fieldwork", "style": "Warning"},
+ {"doctype": "Workflow State", "workflow_state_name": "Review", "style": "Info"},
+ {"doctype": "Workflow State", "workflow_state_name": "Partner Sign-off", "style": "Info"},
+ {"doctype": "Workflow State", "workflow_state_name": "Report Issued", "style": "Success"},
+ {"doctype": "Workflow State", "workflow_state_name": "Billing", "style": "Success"},
+ {"doctype": "Workflow State", "workflow_state_name": "Closed", "style": "Inverse"},
+ {"doctype": "Workflow State", "workflow_state_name": "Archived", "style": "Inverse"}
+]

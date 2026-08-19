@@ -1,0 +1,55 @@
+{
+ "doctype": "DocType",
+ "name": "CA Standard FS Line",
+ "module": "CA Core",
+ "engine": "InnoDB",
+ "autoname": "field:line_name",
+ "fields": [
+  {
+   "fieldname": "line_name",
+   "fieldtype": "Data",
+   "label": "Standard Line Name",
+   "reqd": 1,
+   "unique": 1,
+   "in_list_view": 1,
+   "description": "e.g. 'Trade Receivables', 'Cost of Sales', 'Deferred Tax Liability'"
+  },
+  {
+   "fieldname": "category",
+   "fieldtype": "Select",
+   "label": "Category",
+   "options": "Asset\nLiability\nEquity\nIncome\nExpense",
+   "reqd": 1,
+   "in_list_view": 1,
+   "in_standard_filter": 1
+  },
+  {
+   "fieldname": "classification",
+   "fieldtype": "Select",
+   "label": "Classification",
+   "options": "Current\nNon-Current\nN/A",
+   "in_list_view": 1,
+   "description": "Drives the IAS 1 current/non-current mechanical check in the Rule Flag engine."
+  },
+  {
+   "fieldname": "audit_head",
+   "fieldtype": "Link",
+   "options": "CA Audit Head",
+   "label": "Audit Head (Assignment Grouping)",
+   "in_list_view": 1,
+   "in_standard_filter": 1,
+   "description": "Groups this FS line into an assignable audit work area (e.g. multiple GL accounts under 'Trade Receivables', 'Bad Debt Provision' etc. all roll into the 'Loans & Advances - Non-Performing' Audit Head). Drives the auto-suggested task list in the Assignment Manager — see assignment_manager.py."
+  },
+  {
+   "fieldname": "standard_disclosure_note",
+   "fieldtype": "Small Text",
+   "label": "Default Note Reference / Disclosure Trigger",
+   "description": "Which Compliance Checklist Item(s) this line typically triggers, e.g. related party balances -> IAS 24 checklist."
+  }
+ ],
+ "permissions": [
+  {"role": "CA Partner", "read": 1, "write": 1, "create": 1, "delete": 1},
+  {"role": "CA Manager", "read": 1, "write": 1},
+  {"role": "CA Job Incharge", "read": 1}
+ ]
+}

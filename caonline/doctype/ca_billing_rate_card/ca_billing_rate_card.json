@@ -1,0 +1,77 @@
+{
+ "doctype": "DocType",
+ "name": "CA Billing Rate Card",
+ "module": "CA Billing",
+ "engine": "InnoDB",
+ "autoname": "hash",
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "fields": [
+  {
+   "fieldname": "core_section",
+   "fieldtype": "Section Break",
+   "label": "Rate Card"
+  },
+  {
+   "fieldname": "grade",
+   "fieldtype": "Select",
+   "label": "Grade",
+   "options": "Junior Trainee\nSenior Trainee\nJob Incharge\nDepartment Supervisor\nSuper Supervisor\nManager\nPartner",
+   "reqd": 1,
+   "in_list_view": 1,
+   "in_standard_filter": 1
+  },
+  {
+   "fieldname": "service_line",
+   "fieldtype": "Select",
+   "label": "Service Line",
+   "options": "\nStatutory Audit\nInternal Audit\nReview Engagement\nAgreed-Upon Procedures\nTax Advisory & Compliance\nTax Litigation\nBookkeeping\nFinancial Statement Compilation\nDue Diligence\nBusiness Valuation\nMerger / Restructuring Advisory\nSECP Secretarial\nForensic Audit\nPayroll Outsourcing\nNPO / Donor Audit\nERP Advisory",
+   "in_list_view": 1,
+   "in_standard_filter": 1,
+   "description": "Leave blank for this grade's default rate across all service lines."
+  },
+  {
+   "fieldname": "column_break_1",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "hourly_rate",
+   "fieldtype": "Currency",
+   "label": "Hourly Rate",
+   "reqd": 1,
+   "in_list_view": 1
+  },
+  {
+   "fieldname": "currency",
+   "fieldtype": "Data",
+   "label": "Currency",
+   "default": "PKR"
+  },
+  {
+   "fieldname": "period_section",
+   "fieldtype": "Section Break",
+   "label": "Effective Period"
+  },
+  {
+   "fieldname": "effective_from",
+   "fieldtype": "Date",
+   "label": "Effective From",
+   "reqd": 1,
+   "in_list_view": 1
+  },
+  {
+   "fieldname": "column_break_2",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "effective_to",
+   "fieldtype": "Date",
+   "label": "Effective To",
+   "description": "Leave blank if still in force."
+  }
+ ],
+ "permissions": [
+  {"role": "CA Partner", "read": 1, "write": 1, "create": 1, "delete": 1, "report": 1, "export": 1},
+  {"role": "CA Manager", "read": 1, "write": 1, "create": 1, "report": 1}
+ ]
+}

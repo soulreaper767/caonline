@@ -1,0 +1,18 @@
+[
+ {
+  "doctype": "Kanban Board",
+  "kanban_board_name": "CA Assignment Manager - Task Board",
+  "reference_doctype": "CA Engagement Task",
+  "field_name": "status",
+  "columns": [
+   {"column_name": "Unassigned", "indicator": "gray"},
+   {"column_name": "Not Started", "indicator": "blue"},
+   {"column_name": "In Progress", "indicator": "orange"},
+   {"column_name": "Under Review", "indicator": "purple"},
+   {"column_name": "Query Raised", "indicator": "red"},
+   {"column_name": "Cleared", "indicator": "green"}
+  ],
+  "show_labels": 1,
+  "description": "Primary Assignment Manager view — every audit-head/general task across the firm's active engagements, grouped by status. Filter to a single Engagement to plan one job's fieldwork; filter by Assigned To to see one person's queue. Cards show task_title, audit_head, assigned_to, due_date, and the over_budget flag."
+ }
+]

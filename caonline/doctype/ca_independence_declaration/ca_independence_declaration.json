@@ -1,0 +1,69 @@
+{
+ "doctype": "DocType",
+ "name": "CA Independence Declaration",
+ "module": "CA Core",
+ "engine": "InnoDB",
+ "autoname": "hash",
+ "fields": [
+  {
+   "fieldname": "staff_user",
+   "fieldtype": "Link",
+   "options": "User",
+   "label": "Staff Member",
+   "reqd": 1,
+   "in_list_view": 1,
+   "in_standard_filter": 1
+  },
+  {
+   "fieldname": "related_client",
+   "fieldtype": "Link",
+   "options": "CA Client",
+   "label": "Client / Related Party",
+   "reqd": 1,
+   "in_list_view": 1,
+   "in_standard_filter": 1
+  },
+  {
+   "fieldname": "nature_of_relationship",
+   "fieldtype": "Select",
+   "label": "Nature of Relationship",
+   "options": "Financial Interest\nFamily Relationship\nPrior Employment\nOther Business Relationship\nOther",
+   "reqd": 1
+  },
+  {
+   "fieldname": "column_break_1",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "status",
+   "fieldtype": "Select",
+   "label": "Status",
+   "options": "Active\nResolved / Expired",
+   "default": "Active",
+   "in_list_view": 1
+  },
+  {
+   "fieldname": "waived_by_partner",
+   "fieldtype": "Link",
+   "options": "User",
+   "label": "Waived By (Partner)",
+   "description": "Only a user holding the CA Partner role may be recorded here. Leave blank if unwaived — this blocks the staff member from being added to any engagement for this client or its related-party group."
+  },
+  {
+   "fieldname": "waiver_note",
+   "fieldtype": "Small Text",
+   "label": "Waiver Rationale"
+  },
+  {
+   "fieldname": "declared_on",
+   "fieldtype": "Date",
+   "label": "Declared On",
+   "default": "Today"
+  }
+ ],
+ "permissions": [
+  {"role": "CA Partner", "read": 1, "write": 1, "create": 1, "delete": 1},
+  {"role": "CA Manager", "read": 1, "write": 1, "create": 1},
+  {"role": "CA Job Incharge", "read": 1, "write": 1, "create": 1, "if_owner": 1}
+ ]
+}

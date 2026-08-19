@@ -1,0 +1,53 @@
+{
+ "doctype": "DocType",
+ "name": "CA FS Line Item",
+ "module": "CA Core",
+ "istable": 1,
+ "editable_grid": 1,
+ "engine": "InnoDB",
+ "fields": [
+  {
+   "fieldname": "source_account",
+   "fieldtype": "Data",
+   "label": "Source Account (Client CoA)",
+   "in_list_view": 1,
+   "read_only": 1,
+   "description": "The client's own ledger account name/code as it appeared in the trial balance, before mapping."
+  },
+  {
+   "fieldname": "fs_line_item",
+   "fieldtype": "Link",
+   "options": "CA Standard FS Line",
+   "label": "Standard FS Line",
+   "in_list_view": 1,
+   "reqd": 1,
+   "description": "The mapped, standardised financial statement line (e.g. 'Trade Receivables', 'Cost of Sales'). Mapping is learned per client and reused every period — see fs_integration.py."
+  },
+  {
+   "fieldname": "closing_balance",
+   "fieldtype": "Currency",
+   "label": "Current Period Closing Balance",
+   "in_list_view": 1
+  },
+  {
+   "fieldname": "comparative_balance",
+   "fieldtype": "Currency",
+   "label": "Comparative Period Balance",
+   "in_list_view": 1
+  },
+  {
+   "fieldname": "note_reference",
+   "fieldtype": "Data",
+   "label": "Note Reference",
+   "in_list_view": 1
+  },
+  {
+   "fieldname": "flagged",
+   "fieldtype": "Check",
+   "label": "Has Open Rule Flag",
+   "read_only": 1,
+   "in_list_view": 1
+  }
+ ],
+ "permissions": []
+}

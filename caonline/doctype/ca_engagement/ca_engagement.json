@@ -1,0 +1,176 @@
+{
+ "doctype": "DocType",
+ "name": "CA Engagement",
+ "module": "CA Core",
+ "engine": "InnoDB",
+ "autoname": "format:ENG-{client}-{#####}",
+ "title_field": "engagement_title",
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "is_submittable": 1,
+ "track_changes": 1,
+ "fields": [
+  {
+   "fieldname": "core_section",
+   "fieldtype": "Section Break",
+   "label": "Engagement"
+  },
+  {
+   "fieldname": "client",
+   "fieldtype": "Link",
+   "options": "CA Client",
+   "label": "Client",
+   "reqd": 1,
+   "in_list_view": 1,
+   "in_standard_filter": 1
+  },
+  {
+   "fieldname": "engagement_type_template",
+   "fieldtype": "Link",
+   "options": "CA Engagement Type Template",
+   "label": "Engagement Type Template",
+   "reqd": 1,
+   "in_list_view": 1,
+   "in_standard_filter": 1
+  },
+  {
+   "fieldname": "engagement_title",
+   "fieldtype": "Data",
+   "label": "Engagement Title",
+   "read_only": 1,
+   "description": "Auto-set as '{Client} - {Service Line} - {Year}' on save."
+  },
+  {
+   "fieldname": "column_break_1",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "financial_year",
+   "fieldtype": "Data",
+   "label": "Financial Year / Period",
+   "reqd": 1,
+   "in_list_view": 1
+  },
+  {
+   "fieldname": "status",
+   "fieldtype": "Select",
+   "label": "Status",
+   "read_only": 1,
+   "in_list_view": 1,
+   "in_standard_filter": 1,
+   "options": "Proposal\nEngagement Letter Signed\nPlanning\nFieldwork\nReview\nPartner Sign-off\nReport Issued\nBilling\nClosed\nArchived",
+   "default": "Proposal",
+   "description": "Driven by the CA Engagement Workflow — do not edit directly; use workflow actions."
+  },
+  {
+   "fieldname": "parent_engagement",
+   "fieldtype": "Link",
+   "options": "CA Engagement",
+   "label": "Parent Engagement (Group Audit)",
+   "description": "Set on component engagements so a subsidiary's audit rolls up into the group/consolidated parent file."
+  },
+  {
+   "fieldname": "compliance_section",
+   "fieldtype": "Section Break",
+   "label": "Compliance & Standards"
+  },
+  {
+   "fieldname": "source_financial_statement",
+   "fieldtype": "Link",
+   "options": "CA Financial Statement",
+   "label": "Source Financial Statement",
+   "description": "The Financial Statement this engagement is built on/against. If the client also has a live Bookkeeping engagement, this can be pulled directly from their books instead of a re-uploaded trial balance — see fs_integration.build_financial_statement()."
+  },
+  {
+   "fieldname": "has_bookkeeping_source_available",
+   "fieldtype": "Check",
+   "label": "Client Has Live Bookkeeping Source Available",
+   "read_only": 1,
+   "description": "Computed on save from fs_integration.has_live_bookkeeping_source(). Surfaces the 'pull from live books' option in the UI whenever true."
+  },
+  {
+   "fieldname": "applicable_framework_profile",
+   "fieldtype": "Link",
+   "options": "CA Client Framework Profile",
+   "label": "Applicable Framework Profile",
+   "read_only": 1,
+   "description": "Auto-fetched from the Client on creation; re-evaluated by the standards engine if the client's size/sector data changes."
+  },
+  {
+   "fieldname": "materiality_overall",
+   "fieldtype": "Currency",
+   "label": "Overall Materiality (PKR)"
+  },
+  {
+   "fieldname": "column_break_2",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "materiality_performance",
+   "fieldtype": "Currency",
+   "label": "Performance Materiality (PKR)"
+  },
+  {
+   "fieldname": "open_breach_flags",
+   "fieldtype": "Int",
+   "label": "Open Breach-Severity Rule Flags",
+   "read_only": 1,
+   "description": "Computed count from CA Rule Flag. Engagement cannot move to Partner Sign-off while this is > 0."
+  },
+  {
+   "fieldname": "team_section",
+   "fieldtype": "Section Break",
+   "label": "Team & Budget"
+  },
+  {
+   "fieldname": "team",
+   "fieldtype": "Table",
+   "options": "CA Engagement Team Member",
+   "label": "Team"
+  },
+  {
+   "fieldname": "budgeted_hours_total",
+   "fieldtype": "Float",
+   "label": "Total Budgeted Hours",
+   "read_only": 1
+  },
+  {
+   "fieldname": "actual_hours_total",
+   "fieldtype": "Float",
+   "label": "Total Actual Hours (from Timesheets)",
+   "read_only": 1
+  },
+  {
+   "fieldname": "billing_section",
+   "fieldtype": "Section Break",
+   "label": "Billing"
+  },
+  {
+   "fieldname": "fee_model",
+   "fieldtype": "Select",
+   "label": "Fee Model",
+   "options": "Fixed Fee\nTime & Material\nRetainer\nMilestone\nContingent",
+   "fetch_from": "engagement_type_template.default_fee_model"
+  },
+  {
+   "fieldname": "column_break_3",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "quoted_fee",
+   "fieldtype": "Currency",
+   "label": "Quoted Fee (PKR)"
+  }
+ ],
+ "permissions": [
+  {"role": "CA Partner", "read": 1, "write": 1, "create": 1, "submit": 1, "cancel": 1, "delete": 1, "report": 1, "export": 1},
+  {"role": "CA Manager", "read": 1, "write": 1, "create": 1, "submit": 1, "report": 1, "export": 1},
+  {"role": "CA Department Supervisor", "read": 1, "write": 1, "report": 1},
+  {"role": "CA Super Supervisor", "read": 1, "report": 1},
+  {"role": "CA Job Incharge", "read": 1, "write": 1},
+  {"role": "CA Senior Trainee", "read": 1},
+  {"role": "CA Junior Trainee", "read": 1},
+  {"role": "CA QCR Reviewer", "read": 1},
+  {"role": "CA Client Portal", "read": 1}
+ ]
+}

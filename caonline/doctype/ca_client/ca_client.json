@@ -1,0 +1,163 @@
+{
+ "doctype": "DocType",
+ "name": "CA Client",
+ "module": "CA Core",
+ "engine": "InnoDB",
+ "autoname": "field:client_name",
+ "title_field": "client_name",
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "track_changes": 1,
+ "fields": [
+  {
+   "fieldname": "client_details_section",
+   "fieldtype": "Section Break",
+   "label": "Client Details"
+  },
+  {
+   "fieldname": "client_name",
+   "fieldtype": "Data",
+   "label": "Client Name",
+   "reqd": 1,
+   "unique": 1,
+   "in_list_view": 1,
+   "in_standard_filter": 1
+  },
+  {
+   "fieldname": "entity_type",
+   "fieldtype": "Select",
+   "label": "Entity Type",
+   "options": "Company - Public Listed\nCompany - Public Unlisted\nCompany - Private\nAOP / Partnership\nSole Proprietor\nIndividual\nTrust / NPO\nBranch of Foreign Company",
+   "reqd": 1,
+   "in_list_view": 1,
+   "in_standard_filter": 1
+  },
+  {
+   "fieldname": "column_break_1",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "sector",
+   "fieldtype": "Link",
+   "options": "CA Client Sector",
+   "label": "Sector / Industry",
+   "reqd": 1,
+   "description": "Drives which CA Industry Checklist Template auto-attaches to new engagements."
+  },
+  {
+   "fieldname": "secp_size_category",
+   "fieldtype": "Select",
+   "label": "SECP Size Category",
+   "options": "Listed\nLarge\nMedium\nSmall",
+   "description": "Feeds the Client Framework Profile applicability wizard."
+  },
+  {
+   "fieldname": "risk_rating",
+   "fieldtype": "Select",
+   "label": "Risk Rating",
+   "options": "Low\nMedium\nHigh",
+   "in_list_view": 1
+  },
+  {
+   "fieldname": "statutory_ids_section",
+   "fieldtype": "Section Break",
+   "label": "Statutory Identifiers"
+  },
+  {
+   "fieldname": "ntn",
+   "fieldtype": "Data",
+   "label": "NTN"
+  },
+  {
+   "fieldname": "strn",
+   "fieldtype": "Data",
+   "label": "STRN"
+  },
+  {
+   "fieldname": "column_break_2",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "secp_cuin",
+   "fieldtype": "Data",
+   "label": "SECP CUIN"
+  },
+  {
+   "fieldname": "tax_year_end",
+   "fieldtype": "Select",
+   "label": "Tax Year End",
+   "options": "30 June\n31 December\nOther"
+  },
+  {
+   "fieldname": "isolation_section",
+   "fieldtype": "Section Break",
+   "label": "Data Isolation (Bookkeeping Clients)"
+  },
+  {
+   "fieldname": "linked_company",
+   "fieldtype": "Link",
+   "options": "Company",
+   "label": "Linked Company (Books)",
+   "read_only": 1,
+   "allow_on_submit": 1,
+   "description": "Auto-created the first time a Bookkeeping-type CA Engagement is submitted for this client. Locked to System Admin only — see company_provisioning.py."
+  },
+  {
+   "fieldname": "column_break_3",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "has_portal_access",
+   "fieldtype": "Check",
+   "label": "Client Portal Provisioned",
+   "read_only": 1,
+   "default": "0"
+  },
+  {
+   "fieldname": "related_party_section",
+   "fieldtype": "Section Break",
+   "label": "Group / Related Parties"
+  },
+  {
+   "fieldname": "related_clients",
+   "fieldtype": "Table MultiSelect",
+   "options": "CA Related Client",
+   "label": "Related Clients",
+   "description": "Common directors / holding-subsidiary / family-group links — feeds independence checks and IAS 24 related-party disclosure flags."
+  },
+  {
+   "fieldname": "contacts_section",
+   "fieldtype": "Section Break",
+   "label": "Contacts"
+  },
+  {
+   "fieldname": "contacts",
+   "fieldtype": "Table",
+   "options": "CA Client Contact",
+   "label": "Contacts"
+  }
+ ],
+ "permissions": [
+  {
+   "role": "CA Partner",
+   "read": 1, "write": 1, "create": 1, "delete": 1, "report": 1, "export": 1
+  },
+  {
+   "role": "CA Manager",
+   "read": 1, "write": 1, "create": 1, "report": 1, "export": 1
+  },
+  {
+   "role": "CA Department Supervisor",
+   "read": 1, "report": 1
+  },
+  {
+   "role": "CA Job Incharge",
+   "read": 1
+  },
+  {
+   "role": "CA Client Portal",
+   "read": 1,
+   "if_owner": 0
+  }
+ ]
+}

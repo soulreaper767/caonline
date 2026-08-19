@@ -1,0 +1,50 @@
+{
+ "doctype": "DocType",
+ "name": "CA Engagement Team Member",
+ "module": "CA Core",
+ "istable": 1,
+ "editable_grid": 1,
+ "engine": "InnoDB",
+ "fields": [
+  {
+   "fieldname": "staff_user",
+   "fieldtype": "Link",
+   "options": "User",
+   "label": "Staff Member",
+   "reqd": 1,
+   "in_list_view": 1
+  },
+  {
+   "fieldname": "grade",
+   "fieldtype": "Select",
+   "label": "Grade",
+   "reqd": 1,
+   "in_list_view": 1,
+   "options": "Junior Trainee\nSenior Trainee\nJob Incharge\nDepartment Supervisor\nSuper Supervisor\nManager\nPartner"
+  },
+  {
+   "fieldname": "role_on_engagement",
+   "fieldtype": "Select",
+   "label": "Role on This Engagement",
+   "in_list_view": 1,
+   "options": "Preparer\nFirst Reviewer\nSecond Reviewer\nFinal Sign-off\nSupport"
+  },
+  {
+   "fieldname": "budgeted_hours",
+   "fieldtype": "Float",
+   "label": "Budgeted Hours",
+   "in_list_view": 1
+  },
+  {
+   "fieldname": "independence_check_status",
+   "fieldtype": "Select",
+   "label": "Independence Check",
+   "options": "Not Run\nClear\nConflict - Waived by Partner\nConflict - Blocked",
+   "read_only": 1,
+   "default": "Not Run",
+   "in_list_view": 1,
+   "description": "Set automatically by validate_team_independence() in ca_engagement.py against CA Independence Declaration records."
+  }
+ ],
+ "permissions": []
+}

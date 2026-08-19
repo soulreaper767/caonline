@@ -1,0 +1,25 @@
+{
+ "doctype": "DocType",
+ "name": "CA Related Client",
+ "module": "CA Core",
+ "istable": 1,
+ "engine": "InnoDB",
+ "fields": [
+  {
+   "fieldname": "related_client",
+   "fieldtype": "Link",
+   "options": "CA Client",
+   "label": "Related Client",
+   "in_list_view": 1,
+   "reqd": 1
+  },
+  {
+   "fieldname": "relationship_basis",
+   "fieldtype": "Select",
+   "label": "Relationship Basis",
+   "options": "Common Director(s)\nHolding / Subsidiary\nFamily Group\nOther Common Ownership",
+   "in_list_view": 1
+  }
+ ],
+ "permissions": []
+}

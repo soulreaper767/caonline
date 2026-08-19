@@ -1,0 +1,47 @@
+{
+ "doctype": "DocType",
+ "name": "CA Internal Audit Area",
+ "module": "CA Audit",
+ "istable": 1,
+ "editable_grid": 1,
+ "engine": "InnoDB",
+ "fields": [
+  {
+   "fieldname": "auditable_area",
+   "fieldtype": "Data",
+   "label": "Auditable Area / Process",
+   "in_list_view": 1,
+   "reqd": 1,
+   "description": "e.g. 'Procurement & Payables', 'Payroll', 'Inventory & Warehousing'"
+  },
+  {
+   "fieldname": "risk_rating",
+   "fieldtype": "Select",
+   "label": "Risk Rating",
+   "options": "Low\nMedium\nHigh",
+   "in_list_view": 1
+  },
+  {
+   "fieldname": "planned_quarter",
+   "fieldtype": "Select",
+   "label": "Planned Quarter",
+   "options": "Q1\nQ2\nQ3\nQ4",
+   "in_list_view": 1
+  },
+  {
+   "fieldname": "status",
+   "fieldtype": "Select",
+   "label": "Status",
+   "options": "Not Started\nIn Progress\nCompleted\nDeferred",
+   "default": "Not Started",
+   "in_list_view": 1
+  },
+  {
+   "fieldname": "control_library_reference",
+   "fieldtype": "Data",
+   "label": "Control Testing Library Reference",
+   "description": "Reusable control-testing library reference distinct from the external-audit RCM library, per build prompt Section 12."
+  }
+ ],
+ "permissions": []
+}
